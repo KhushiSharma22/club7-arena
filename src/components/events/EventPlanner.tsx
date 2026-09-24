@@ -116,18 +116,18 @@ export default function EventPlanner() {
   }
 
   return (
-    <section id="plan" ref={ref} className="relative mx-auto w-full max-w-[1600px] scroll-mt-[calc(var(--header-height,90px)+24px)] bg-c7-bg-1 px-edge pb-20 pt-16 md:pb-24 md:pt-20">
+    <section id="plan" ref={ref} className="events-planner relative mx-auto w-full max-w-[1600px] scroll-mt-[calc(var(--header-height,90px)+24px)] bg-c7-bg-1 px-edge pb-20 pt-16 md:pb-24 md:pt-20">
       <div className="border-t border-c7-line/15" />
 
       <div
         className="mt-12 max-w-xl transition-[opacity,transform] duration-700 ease-out md:mt-14"
         style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)" }}
       >
-        <p className="font-body text-tag tracking-[0.24em] uppercase text-c7-red">05 / Your Plan</p>
+        <p className="font-body text-tag tracking-[0.24em] uppercase text-c7-red">Let’s make it happen</p>
         <h2 className="-ml-1 mt-3 font-display uppercase leading-[0.94] text-c7-ink text-[clamp(2.5rem,4vw,4.25rem)]">
-          Tell Us the Plan.
+          Your event starts here.
         </h2>
-        <p className="mt-4 font-body text-body-lg text-c7-ink-dim">30 seconds. We&apos;ll take it from there.</p>
+        <p className="mt-4 font-body text-body-lg text-c7-ink-dim">Share a few details. We’ll help you put the day together.</p>
       </div>
 
       <div
@@ -145,7 +145,7 @@ export default function EventPlanner() {
           </div>
         ) : (
           <div className="grid gap-12 md:grid-cols-12 md:gap-10">
-            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-9 md:col-span-7">
+            <form onSubmit={handleSubmit} noValidate className="events-plan-form flex flex-col gap-y-9 md:col-span-7">
               <div className="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2">
                 <FormRow id="plan-name" label="Name" type="text" value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} error={errors.name} />
                 <FormRow
@@ -238,10 +238,10 @@ export default function EventPlanner() {
                   type="submit"
                   className="inline-flex items-center gap-2 bg-c7-red px-7 py-4 font-body text-body font-medium uppercase tracking-[0.08em] text-c7-ink transition-colors hover:bg-c7-red-dim focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
                 >
-                  Send the Plan
+                  Continue on WhatsApp
                   <span aria-hidden="true">↗</span>
                 </button>
-                <p className="font-body text-body-sm text-c7-ink-dim">We&apos;ll get back to you on WhatsApp.</p>
+                <p className="font-body text-body-sm text-c7-ink-dim">Review your enquiry in WhatsApp, then send it to our team.</p>
               </div>
 
               <div className="border-t border-c7-line/15 pt-6">

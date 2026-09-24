@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
+import "./events.css";
 import EventsHero from "@/components/events/EventsHero";
-import EventManifesto from "@/components/events/EventManifesto";
 import NightSequence from "@/components/events/NightSequence";
 import EventPosters from "@/components/events/EventPoster";
-import PeopleMoment from "@/components/events/PeopleMoment";
 import EventPlanner from "@/components/events/EventPlanner";
 import EventsClosing from "@/components/events/EventsClosing";
 
@@ -14,14 +13,12 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <>
+    <main className="events-page">
       <EventsHero />
-      <EventManifesto />
-      <NightSequence />
       <EventPosters />
-      <PeopleMoment />
+      <NightSequence />
       <EventPlanner />
       <EventsClosing />
-    </>
+    </main>
   );
 }
