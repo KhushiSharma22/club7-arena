@@ -1,0 +1,78 @@
+/* Small, scoped refinements; the original venue palette stays intact. */
+.site-nav-link { position: relative; padding-block: 6px; }
+.site-nav-link::after { content: ""; position: absolute; height: 2px; left: 0; right: 0; bottom: -2px; background: #b9c7ad; transform: scaleX(0); transform-origin: left; transition: transform 220ms ease; }
+.site-nav-link:hover::after, .site-nav-link[aria-current="page"]::after { transform: scaleX(1); }
+.site-nav-link[aria-current="page"] { color: #f3ecdf; }
+.home-directory { max-width: 1600px; margin: auto; display: flex; align-items: center; gap: 28px; padding: 25px var(--spacing-edge); border-bottom: 1px solid #f3ecdf24; }
+.home-directory > span { margin-right: auto; color: #a79c88; font-size: 12px; }
+.home-directory a { display: flex; gap: 20px; align-items: center; font-size: 12px; white-space: nowrap; padding-block: 9px; }
+.home-directory a span { color: #b9c7ad; transition: transform .2s; }
+.home-directory a:hover span { transform: translate(2px,-2px); }
+.cafe-interlude { background: #e7e1d4; color: #273327; }
+.cafe-inner { max-width: 1280px; margin: auto; padding: 60px var(--spacing-edge); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
+.cafe-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: .15em; color: #636750; }
+.cafe-copy h2 { font-family: var(--font-display); font-size: clamp(38px,4vw,60px); line-height: 1; margin-top: 18px; }
+.cafe-copy h2 span { color: #747a58; }
+.cafe-copy > p:not(.cafe-eyebrow) { font-size: 14px; line-height: 1.8; color: #5c6355; max-width: 365px; margin-top: 20px; }
+.cafe-copy a { display: inline-flex; gap: 36px; font-size: 12px; font-weight: 600; border-bottom: 1px solid #27332766; padding-block: 12px; margin-top: 15px; }
+.cafe-art { text-align: center; border-left: 1px solid #27332730; padding-left: 35px; }
+.cafe-art svg { width: min(100%, 320px); margin: 12px auto; }
+.cafe-art-note { font-size: 14px; font-style: italic; color: #747a58; }
+.cafe-art-caption { font-size: 9px; letter-spacing: .18em; }
+.sport-selector button { position: relative; padding-inline: 20px; }
+.sport-selector button[aria-pressed="true"] { background: #b9c7ad0f; }
+.sport-selector button::after { content: "↗"; position: absolute; top: 25px; right: 20px; color: #b9c7ad; opacity: 0; transform: translate(-4px,4px); transition: opacity .25s, transform .25s; }
+.sport-selector button[aria-pressed="true"]::after { opacity: 1; transform: none; }
+.play-page #book-enquiry { background: #0b1b11; border-block: 1px solid #f3ecdf20; }
+@keyframes c7-soft-arrival { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes c7-image-arrival { from { opacity: .5; clip-path: inset(0 5% 0 0); } to { opacity: 1; clip-path: inset(0); } }
+@keyframes c7-steam-rise { from { opacity: .3; transform: translateY(4px); } to { opacity: .8; transform: translateY(-3px); } }
+@media (prefers-reduced-motion: no-preference) {
+ .events-hero-copy > * { animation: c7-soft-arrival 600ms both; }
+ .events-hero-copy h1 { animation-delay: 70ms; }
+ .events-hero-copy .events-intro { animation-delay: 140ms; }
+ .events-hero-copy .events-actions { animation-delay: 210ms; }
+ .events-hero-image { animation: c7-image-arrival 800ms both; }
+ .crew-photo img { animation: c7-image-arrival 400ms both; }
+ .crew-description { animation: c7-soft-arrival 320ms both; }
+ .cafe-inner.is-visible .cafe-copy { animation: c7-soft-arrival 650ms both; }
+ .cafe-inner.is-visible .cafe-art { animation: c7-soft-arrival 750ms 120ms both; }
+ .cafe-inner.is-visible .cafe-steam { animation: c7-steam-rise 1800ms ease-in-out 4 alternate; }
+}
+@media (max-width: 899px) { .home-directory { gap: 18px; flex-wrap: wrap; } .home-directory > span { width: 100%; } .home-directory a { flex: 1; justify-content: space-between; } }
+@media (max-width: 599px) {
+ .home-directory { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; }
+ .home-directory > span { grid-column: 1 / -1; padding-bottom: 8px; }
+ .cafe-inner { grid-template-columns: 1fr; gap: 35px; padding-block: 40px; }
+ .cafe-art { border-left: 0; border-top: 1px solid #27332730; padding: 30px 0 0; }
+ .cafe-art svg { max-width: 240px; }
+ .sport-selector button { padding-inline: 8px; }
+ .sport-selector button::after { display: none; }
+}
+
+/* A quiet hospitality-style introduction, on the original dark background. */
+.gather-section { max-width: 1440px; margin-inline: auto; padding: 56px var(--spacing-edge) 72px; display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: clamp(40px, 8vw, 110px); }
+.gather-eyebrow { color: #b7c3ad; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.gather-intro h2 { font-family: var(--font-body); font-size: clamp(30px, 3vw, 42px); font-weight: 400; line-height: 1.25; letter-spacing: -.035em; margin-top: 20px; }
+.gather-intro h2 span { color: #bdc9b4; }
+.gather-description { font-size: 16px; line-height: 1.8; color: #b2b5a9; max-width: 405px; margin-top: 20px; }
+.gather-all { display: inline-flex; align-items: center; gap: 30px; border-bottom: 1px solid #b7c3ad80; padding-block: 12px; margin-top: 18px; font-size: 15px; }
+.gather-all span { font-size: 22px; transition: transform .2s; }
+.gather-all:hover span { transform: translate(3px,-3px); }
+.gather-occasions { border-top: 1px solid #f3ecdf30; }
+.gather-occasions a { display: flex; align-items: center; justify-content: space-between; gap: 25px; border-bottom: 1px solid #f3ecdf30; padding: 27px 0; }
+.gather-occasions h3 { font-family: var(--font-body); font-size: 23px; font-weight: 400; letter-spacing: -.025em; line-height: 1.3; }
+.gather-occasions p { color: #b2b5a9; font-size: 14px; line-height: 1.7; margin-top: 8px; max-width: 340px; }
+.gather-occasions a > span { font-size: 25px; color: #b7c3ad; transition: transform .25s, color .25s; }
+.gather-occasions a:hover > span { transform: translate(3px,-3px); color: #f3ecdf; }
+.gather-occasions a:hover h3 { color: #c9d5bf; }
+@media (prefers-reduced-motion: no-preference) {
+ .gather-section.is-visible .gather-intro { animation: c7-soft-arrival 550ms both; }
+ .gather-section.is-visible .gather-occasions { animation: c7-soft-arrival 550ms 100ms both; }
+}
+@media (max-width: 759px) {
+ .gather-section { grid-template-columns: 1fr; gap: 36px; padding-block: 40px 48px; }
+ .gather-description { max-width: 480px; }
+ .gather-occasions a { padding-block: 23px; }
+ .gather-occasions h3 { font-size: 22px; }
+}

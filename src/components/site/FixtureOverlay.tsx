@@ -9,7 +9,8 @@ import { WHATSAPP_HREF } from "@/lib/constants";
 const ITEMS = [
   { label: "PLAY", href: "/play" },
   { label: "GROUP EVENTS", href: "/events" },
-  { label: "VISIT", href: "/#visit" },
+  { label: "LOCATION", href: "/location" },
+  { label: "SOCIALS", href: "/socials" },
 ];
 
 const FOCUSABLE_SELECTOR =

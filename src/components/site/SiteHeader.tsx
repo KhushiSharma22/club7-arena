@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import FixtureOverlay from "./FixtureOverlay";
 
 /**
@@ -13,10 +14,12 @@ import FixtureOverlay from "./FixtureOverlay";
 const NAV_LINKS = [
   { label: "Play", href: "/play" },
   { label: "Group Events", href: "/events" },
-  { label: "Visit", href: "/#visit" },
+  { label: "Location", href: "/location" },
+  { label: "Socials", href: "/socials" },
 ];
 
 export default function SiteHeader() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -69,17 +72,18 @@ export default function SiteHeader() {
           <Link href="/" className="font-display text-2xl md:text-3xl uppercase tracking-tight text-c7-ink leading-none">
             Club<span className="text-c7-red">7</span>
           </Link>
-          <span className="hidden md:inline font-body text-tag tracking-[0.24em] uppercase text-c7-ink-dim">
+          <span className="hidden xl:inline font-body text-tag tracking-[0.24em] uppercase text-c7-ink-dim">
             Sector 89 / FBD
           </span>
         </div>
 
-        <nav className="hidden items-center gap-7 md:flex lg:gap-9">
+        <nav className="hidden items-center gap-5 md:flex lg:gap-7">
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+              aria-current={pathname === link.href ? "page" : undefined}
+              className="site-nav-link font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
             >
               {link.label}
             </a>

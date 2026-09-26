@@ -58,7 +58,7 @@ function SportSelector({
   const activeIndex = PLAY_SPORTS.findIndex((s) => s.id === activeId);
 
   return (
-    <div className="relative grid grid-cols-3 border-y border-c7-line/15">
+    <div className="sport-selector relative grid grid-cols-3 border-y border-c7-line/15">
       {PLAY_SPORTS.map((sport, i) => {
         const isActive = sport.id === activeId;
         return (

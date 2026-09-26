@@ -26,19 +26,6 @@
 .events-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 32px; }
 .events-page h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 3.5vw, 3.6rem); line-height: 1.05; margin-top: 13px; text-transform: uppercase; }
 .events-section-heading > p { font-size: 14px; line-height: 1.75; color: #5e675e; }
-.events-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.events-card { display: flex; flex-direction: column; background: #faf8f2; border: 1px solid #22312320; border-radius: 6px; overflow: hidden; scroll-margin-top: 110px; }
-.events-card-image { position: relative; aspect-ratio: 1.65; overflow: hidden; }
-.events-card-image img { transition: transform .35s; }
-.events-card:hover img { transform: scale(1.035); }
-.events-card-image > span { position: absolute; left: 15px; bottom: 15px; background: #06110be6; color: #f3ecdf; padding: 7px 10px; border-radius: 2px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-.events-card-copy { display: flex; flex-direction: column; flex: 1; padding: 26px; }
-.events-card-tag { font-size: 10px; color: #666c62; letter-spacing: .08em; text-transform: uppercase; }
-.events-card h3 { font-family: var(--font-display); text-transform: uppercase; font-size: 32px; margin-top: 12px; }
-.events-card-subtitle { font-size: 13px; font-weight: 600; margin-top: 5px; line-height: 1.6; }
-.events-card-description { color: #5e675e; font-size: 13px; line-height: 1.8; margin-top: 12px; padding-bottom: 26px; }
-.events-card a { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 18px; border-top: 1px solid #22312325; font-size: 13px; font-weight: 600; }
-.events-card a:hover { color: #a01c25; }
 .events-experience { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; padding-block: 88px; align-items: center; }
 .events-experience-image { position: relative; height: 490px; border-radius: 6px; overflow: hidden; }
 .events-experience-image > span { position: absolute; bottom: 24px; left: 24px; background: #06110bdb; padding: 12px 18px; font-family: var(--font-display); font-size: 25px; }
@@ -58,6 +45,42 @@
 .events-planner label, .events-planner legend { font-size: 10px; letter-spacing: .1em; }
 .events-planner button[type=submit] { border-radius: 4px; font-size: 12px; }
 .events-page #event-posters { scroll-margin-top: var(--header-height, 90px); }
-@media (max-width: 1000px) { .events-hero { gap: 30px; } .events-hero-image { min-height: 500px; } .events-card-copy { padding: 20px; } .events-experience { gap: 5%; } }
-@media (max-width: 899px) { .events-hero { grid-template-columns: 1fr; padding-top: calc(var(--header-height, 90px) + 32px); } .events-hero-copy { max-width: 600px; } .events-hero h1 { font-size: clamp(3.4rem, 9vw, 5rem); } .events-hero-image { min-height: 380px; } .events-card-grid { grid-template-columns: 1fr; gap: 24px; } .events-card { display: grid; grid-template-columns: .9fr 1fr; } .events-card-image { aspect-ratio: auto; min-height: 280px; } .events-experience { grid-template-columns: 1fr; gap: 36px; padding-block: 56px; } .events-experience-image { height: 350px; } .events-section-heading { align-items: start; flex-direction: column; gap: 16px; } }
-@media (max-width: 599px) { .events-hero { padding-bottom: 40px; } .events-hero-image { min-height: 340px; } .events-hero-image figcaption { left: 24px; bottom: 24px; } .events-photo-label { font-size: 9px; left: 16px; top: 16px; } .events-intro { font-size: 14px; } .events-location { margin-top: 26px; } .events-occasions { padding-block: 48px; } .events-card { display: flex; } .events-card-image { min-height: 0; aspect-ratio: 1.65; } .events-card-copy { padding: 24px; } .events-experience-image { height: 300px; } .events-planner button[type=submit] { width: 100%; justify-content: center; } }
+@media (max-width: 1000px) { .events-hero { gap: 30px; } .events-hero-image { min-height: 500px; } .events-experience { gap: 5%; } }
+@media (max-width: 899px) { .events-hero { grid-template-columns: 1fr; padding-top: calc(var(--header-height, 90px) + 32px); } .events-hero-copy { max-width: 600px; } .events-hero h1 { font-size: clamp(3.4rem, 9vw, 5rem); } .events-hero-image { min-height: 380px; } .events-experience { grid-template-columns: 1fr; gap: 36px; padding-block: 56px; } .events-experience-image { height: 350px; } .events-section-heading { align-items: start; flex-direction: column; gap: 16px; } }
+@media (max-width: 599px) { .events-hero { padding-bottom: 40px; } .events-hero-image { min-height: 340px; } .events-hero-image figcaption { left: 24px; bottom: 24px; } .events-photo-label { font-size: 9px; left: 16px; top: 16px; } .events-intro { font-size: 14px; } .events-location { margin-top: 26px; } .events-occasions { padding-block: 48px; } .events-experience-image { height: 300px; } .events-planner button[type=submit] { width: 100%; justify-content: center; } }
+
+/* A compact, interactive occasion index, with one shared image. */
+.crew-section { background: #e5e9db; color: #17291f; padding-block: 28px 56px; }
+.crew-topline { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid #17291f40; text-transform: uppercase; font-size: 10px; letter-spacing: .12em; }
+.crew-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 7vw, 100px); padding-top: 40px; }
+.crew-kicker { font-size: 11px; color: #526052; }
+.events-page .crew-picker h2 { font-family: var(--font-body); font-size: clamp(30px, 3.5vw, 48px); font-weight: 600; line-height: 1.12; letter-spacing: -.055em; text-transform: none; margin-top: 12px; }
+.crew-picker h2 span { text-decoration: underline; text-decoration-color: #bd443b; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.crew-options { margin-top: 35px; }
+.crew-options button { width: 100%; display: grid; grid-template-columns: 24px 1fr 28px; gap: 14px; text-align: left; align-items: center; border-top: 1px solid #17291f35; padding: 17px 10px; cursor: pointer; transition: background .18s, color .18s; scroll-margin-top: calc(var(--header-height, 90px) + 20px); }
+.crew-options button:last-child { border-bottom: 1px solid #17291f35; }
+.crew-options button[aria-pressed=true] { background: #17291f; color: #edf0e4; }
+.crew-options button:hover:not([aria-pressed=true]) { background: #17291f0c; }
+.crew-option-number { font-size: 10px; font-variant-numeric: tabular-nums; opacity: .7; }
+.crew-options button > span:nth-child(2) { font-size: clamp(15px, 1.6vw, 20px); font-weight: 500; letter-spacing: -.03em; }
+.crew-options small { display: block; font-size: 10px; letter-spacing: .05em; font-weight: 400; opacity: .7; margin-top: 3px; }
+.crew-option-arrow { font-size: 23px; opacity: .35; }
+.crew-options button[aria-pressed=true] .crew-option-arrow { opacity: 1; color: #d8ed97; }
+.crew-footnote { font-size: 11px; color: #526052; margin-top: 18px; }
+.crew-photo { position: relative; aspect-ratio: 1.75; background: #17291f; }
+.crew-photo img { object-position: center; }
+.crew-photo-index { position: absolute; top: 12px; left: 12px; color: white; background: #17291fbd; padding: 5px 8px; font-size: 9px; letter-spacing: .14em; }
+.crew-photo figcaption { position: absolute; bottom: -13px; right: 12px; max-width: calc(100% - 24px); padding: 9px 13px; font-size: 11px; color: #17291f; background: #d8ed97; transform: rotate(-2deg); }
+.crew-description { padding-top: 36px; }
+.crew-description h3 { font-size: 18px; font-weight: 500; letter-spacing: -.03em; }
+.crew-description p { font-size: 13px; line-height: 1.8; color: #526052; margin-top: 10px; max-width: 420px; min-height: 71px; }
+.crew-description a { display: inline-flex; align-items: center; gap: 32px; border-bottom: 1px solid #17291f; padding-block: 10px; margin-top: 10px; font-size: 12px; font-weight: 600; }
+.crew-description a:hover { color: #a0322c; border-color: #a0322c; }
+@media (max-width: 759px) {
+ .crew-layout { grid-template-columns: 1fr; gap: 32px; padding-top: 28px; }
+ .events-page .crew-picker h2 { font-size: 38px; }
+ .crew-options { margin-top: 28px; }
+ .crew-description p { min-height: 0; }
+ .crew-topline { font-size: 9px; letter-spacing: .06em; }
+ .crew-section { padding-bottom: 40px; }
+}

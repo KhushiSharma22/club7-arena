@@ -33,11 +33,11 @@ export default function PlayPageClient() {
   }
 
   return (
-    <>
+    <main className="play-page">
       <PlaySection1 activeId={activeId} onSelect={handleSelect} />
       <PlaySection2 activeId={activeId} />
       <PlaySection3 />
       <MobileBookingBar activeId={activeId} />
-    </>
+    </main>
   );
 }
