@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import PlayPageClient from "@/components/play/PlayPageClient";
 
 export const metadata: Metadata = {
-  title: "Play",
-  description: "Football, box cricket or pickleball. Pick one. We'll take it from there.",
+  title: "Book a Slot",
+  description: "Choose your sport, date and time, add your group details and review your booking at Club 7.",
 };
 
 export default function PlayPage() {

@@ -2,10 +2,8 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PLAY_SPORTS, type PlaySportId } from "@/lib/play-data";
-import PlaySection1 from "./PlaySection1";
-import PlaySection2 from "./PlaySection2";
-import PlaySection3 from "./PlaySection3";
-import MobileBookingBar from "./MobileBookingBar";
+import BookingFlow from "./BookingFlow";
+import "@/styles/booking.css";
 
 /**
  * Sport selection is derived directly from the `?sport=` URL param on
@@ -32,12 +30,5 @@ export default function PlayPageClient() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
-  return (
-    <main className="play-page">
-      <PlaySection1 activeId={activeId} onSelect={handleSelect} />
-      <PlaySection2 activeId={activeId} />
-      <PlaySection3 />
-      <MobileBookingBar activeId={activeId} />
-    </main>
-  );
+  return <BookingFlow activeId={activeId} onSelect={handleSelect} />;
 }

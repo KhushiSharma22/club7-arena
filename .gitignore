@@ -45,3 +45,9 @@ dist/
 .env
 .env.*
 .DS_Store
+
+# Local database, customer data and generated staff credentials
+/.data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
