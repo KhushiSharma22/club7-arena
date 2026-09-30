@@ -89,7 +89,7 @@ export const NIGHT_STATES: NightState[] = [
     id: "game-on",
     time: "7:45 PM",
     label: "Game On",
-    lines: ["Football. Box Cricket. Pickleball.", "Whole crew in."],
+    lines: ["Box Cricket. Football. Pickleball.", "Whole crew in."],
     image: {
       src: "/stock/warmup-turf.jpg",
       alt: "Players warming up together under a single floodlight — representative photo",

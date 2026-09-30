@@ -48,8 +48,25 @@ export type PlaySport = {
  */
 export const PLAY_SPORTS: PlaySport[] = [
   {
-    id: "football",
+    id: "cricket",
     number: "01",
+    shortName: "Box Cricket",
+    line: "Settle it on the pitch.",
+    info: [
+      { label: "Format", value: "Box Cricket" },
+      { label: "Turfs", value: "2 Turfs" },
+      { label: "Location", value: "Sector 89" },
+    ],
+    image: {
+      src: "/venue/turf-top-down-night.jpg",
+      position: "62% 48%",
+      zoom: 1.05,
+      alt: "Top-down view of Club 7's floodlit cricket pitch at night",
+    },
+  },
+  {
+    id: "football",
+    number: "02",
     shortName: "Football",
     line: "Make time for a proper game.",
     info: [
@@ -63,23 +80,6 @@ export const PLAY_SPORTS: PlaySport[] = [
       zoom: 1.12,
       alt: "Floodlit 7-a-side football match at night — representative photo",
       stock: true,
-    },
-  },
-  {
-    id: "cricket",
-    number: "02",
-    shortName: "Box Cricket",
-    line: "Settle it on the pitch.",
-    info: [
-      { label: "Format", value: "Box Cricket" },
-      { label: "Turfs", value: "2 Turfs" },
-      { label: "Location", value: "Sector 89" },
-    ],
-    image: {
-      src: "/venue/turf-top-down-night.jpg",
-      position: "62% 48%",
-      zoom: 1.05,
-      alt: "Top-down view of Club 7's floodlit cricket pitch at night",
     },
   },
   {

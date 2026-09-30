@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
 import SiteHeader from "@/components/site/SiteHeader";
+import WhatsAppFloat from "@/components/site/WhatsAppFloat";
 import "./globals.css";
 
 // DISPLAY — condensed, athletic, poster/stadium-signage weight.
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <SiteHeader />
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   );

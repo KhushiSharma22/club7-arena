@@ -18,19 +18,6 @@ export default function Hero() {
       <div className="relative z-10 mx-auto flex min-h-[80dvh] w-full max-w-[1600px] flex-col px-edge pb-12 pt-28 md:min-h-[74dvh] md:pb-14">
         <div className="flex flex-1 flex-col justify-end md:justify-center">
           <div className="max-w-xl md:max-w-2xl">
-            {/* Environmental label — one flowing text run after the dot
-                (not separate flex items) so it wraps naturally at
-                word boundaries on narrow screens instead of breaking
-                into two cramped columns. */}
-            <p
-              className={`c7-anim-reveal flex items-start gap-2.5 font-body text-tag tracking-[0.14em] sm:tracking-[0.18em] uppercase text-c7-ink-dim ${entrance(
-                700
-              )}`}
-            >
-              <span className="mt-[5px] h-1.5 w-1.5 shrink-0 bg-c7-red c7-anim-pulse-dot" aria-hidden="true" />
-              <span>Sector 89, Faridabad</span>
-            </p>
-
             {/* Headline — a slightly gentler ceiling than the shared
                 display-1 token so it stays "large and confident"
                 without ballooning into comic-huge on very wide
