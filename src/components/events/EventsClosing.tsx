@@ -2,14 +2,22 @@
 
 import { useRevealOnView } from "@/lib/useRevealOnView";
 
+type EventsClosingProps = {
+  heading: string;
+  sub: string;
+  planHref: string;
+  planLabel: string;
+  tagLine: string;
+};
+
 /**
- * Understated on purpose — the visitor has already seen the whole
- * evening and filled in a plan above; this doesn't need to sell
- * anything again. Same compact metadata-bar treatment the homepage
- * uses to close its own last section, so the page hands off to the
- * rest of the site consistently rather than inventing a new footer.
+ * Understated on purpose — the visitor has already seen the page and,
+ * usually, filled in a form above; this doesn't need to sell anything
+ * again. Same compact metadata-bar treatment the homepage uses to
+ * close its own last section. Shared across the hub and all three
+ * occasion pages via props rather than four near-identical copies.
  */
-export default function EventsClosing() {
+export default function EventsClosing({ heading, sub, planHref, planLabel, tagLine }: EventsClosingProps) {
   const { ref, visible } = useRevealOnView<HTMLDivElement>(0.2);
 
   return (
@@ -21,14 +29,14 @@ export default function EventsClosing() {
         >
           <div>
             <h2 className="-ml-1 font-display uppercase leading-[0.94] text-c7-ink text-[clamp(2.25rem,3.6vw,3.5rem)]">
-              Bring the People.
+              {heading}
             </h2>
-            <p className="mt-2 font-body text-body text-c7-ink-dim">We&apos;ll take it from there.</p>
+            <p className="mt-2 font-body text-body text-c7-ink-dim">{sub}</p>
             <a
-              href="#plan"
+              href={planHref}
               className="group mt-5 inline-flex items-center gap-2 border-b border-c7-line/40 pb-1 font-body text-body font-medium uppercase tracking-[0.08em] text-c7-ink transition-colors hover:border-c7-red hover:text-c7-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
             >
-              Plan Your Night
+              {planLabel}
               <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-[3px]">
                 ↗
               </span>
@@ -36,7 +44,7 @@ export default function EventsClosing() {
           </div>
 
           <div className="font-body text-body-sm uppercase tracking-[0.1em] text-c7-ink-dim md:text-right">
-            <p>Team Days / Birthdays / Private Groups</p>
+            <p>{tagLine}</p>
             <p className="mt-1 text-c7-ink-dim/60">Sector 89, Faridabad</p>
           </div>
         </div>

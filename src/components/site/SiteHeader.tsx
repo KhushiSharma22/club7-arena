@@ -11,11 +11,74 @@ import FixtureOverlay from "./FixtureOverlay";
  * academy and events together under a label that didn't describe half
  * of what was in it.
  */
-const NAV_LINKS = [
-  { label: "Play", href: "/play" },
-  { label: "Group Events", href: "/events" },
-  { label: "Location", href: "/location" },
+const NAV_LINKS = [{ label: "Location", href: "/location" }];
+
+/** Group Events has no hub page of its own — every occasion is its own
+ * page, so the nav link is a menu straight to the three of them rather
+ * than a stop-off page that just repeats these same three links. */
+const EVENTS_LINKS = [
+  { label: "Birthdays", href: "/events/birthday" },
+  { label: "Corporate & Team Days", href: "/events/corporate" },
+  { label: "Tournaments", href: "/events/tournament" },
 ];
+
+function GroupEventsMenu({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const isEventsPage = pathname.startsWith("/events");
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false);
+    }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={wrapRef} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-current={isEventsPage ? "page" : undefined}
+        className="site-nav-link flex items-center gap-1.5 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+      >
+        Group Events
+        <span aria-hidden="true" className={`text-[9px] transition-transform duration-200 ${open ? "-rotate-180" : ""}`}>
+          ▾
+        </span>
+      </button>
+      <div
+        role="menu"
+        className={`absolute left-0 top-full mt-3 w-56 border border-c7-line/15 bg-c7-bg-1 py-2 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-[opacity,transform] duration-150 ${
+          open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
+        }`}
+      >
+        {EVENTS_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            role="menuitem"
+            aria-current={pathname === link.href ? "page" : undefined}
+            className="block px-4 py-2.5 font-body text-body-sm text-c7-ink-dim transition-colors hover:bg-c7-bg-3 hover:text-c7-ink"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -77,6 +140,14 @@ export default function SiteHeader() {
         </div>
 
         <nav className="hidden items-center gap-5 md:flex lg:gap-7">
+          <a
+            href="/play"
+            aria-current={pathname === "/play" ? "page" : undefined}
+            className="site-nav-link font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+          >
+            Play
+          </a>
+          <GroupEventsMenu pathname={pathname} />
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
