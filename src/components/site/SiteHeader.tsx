@@ -28,7 +28,32 @@ const EVENTS_LINKS = [
 function GroupEventsMenu({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isEventsPage = pathname.startsWith("/events");
+
+  // The dropdown sits a few pixels below the button (top-full + mt-3),
+  // so moving the cursor from one to the other briefly crosses empty
+  // space outside the menu's own box — an instant close-on-leave reads
+  // that as the cursor having left for good. A short delay survives
+  // that crossing; it's cancelled the moment the cursor lands back
+  // anywhere in the menu.
+  function openMenu() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setOpen(true);
+  }
+
+  function scheduleClose() {
+    closeTimer.current = setTimeout(() => setOpen(false), 250);
+  }
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -47,7 +72,7 @@ function GroupEventsMenu({ pathname }: { pathname: string }) {
   }, [open]);
 
   return (
-    <div ref={wrapRef} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <div ref={wrapRef} className="relative" onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
       <button
         type="button"
         onClick={() => setOpen(true)}
