@@ -42,7 +42,7 @@ export default function Hero() {
             {/* Supporting line + actions */}
             <div className={`c7-anim-reveal mt-6 ${entrance(1150)}`}>
               <p className="font-body text-body text-c7-ink-dim md:text-body-lg">
-                Cricket, football, pickleball and a café in Sector 89, Faridabad.
+                Cricket, football, pickleball and a café.
               </p>
               <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                 <a

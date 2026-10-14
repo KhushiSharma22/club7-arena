@@ -6,12 +6,15 @@ import { usePathname } from "next/navigation";
 import FixtureOverlay from "./FixtureOverlay";
 
 /**
- * The three journeys the site actually offers, visible directly rather
- * than hidden inside one "Play" dropdown that used to bundle sports,
+ * The journeys the site actually offers, visible directly rather than
+ * hidden inside one "Play" dropdown that used to bundle sports,
  * academy and events together under a label that didn't describe half
  * of what was in it.
  */
-const NAV_LINKS = [{ label: "Location", href: "/location" }];
+const NAV_LINKS = [
+  { label: "Academy", href: "/academy" },
+  { label: "Location", href: "/location" },
+];
 
 /** Group Events has no hub page of its own — every occasion is its own
  * page, so the nav link is a menu straight to the three of them rather

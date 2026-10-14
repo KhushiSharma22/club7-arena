@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { WHATSAPP_HREF } from "@/lib/constants";
 
-// Matches the desktop nav's three journeys — the menu previously
-// listed each sport plus academy plus events as five equal items,
-// which described a booking sub-menu, not a site map. Group Events has
-// no hub page of its own (every occasion is its own page), so it
-// expands in place to its three pages rather than linking anywhere.
+// Matches the desktop nav's journeys — the menu previously listed
+// each sport plus academy plus events as five equal items, which
+// described a booking sub-menu, not a site map. Group Events has no
+// hub page of its own (every occasion is its own page), so it expands
+// in place to its three pages rather than linking anywhere.
 const ITEMS = [
   { label: "PLAY", href: "/play" },
   {
@@ -18,6 +18,7 @@ const ITEMS = [
       { label: "Tournaments", href: "/events/tournament" },
     ],
   },
+  { label: "ACADEMY", href: "/academy" },
   { label: "LOCATION", href: "/location" },
   { label: "SOCIALS", href: "/socials" },
 ];
