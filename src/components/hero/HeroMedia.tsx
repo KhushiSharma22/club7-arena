@@ -87,7 +87,7 @@ export default function HeroMedia({
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 h-full w-full object-cover object-[center_44%] c7-anim-photo-expose"
+        className="absolute inset-0 h-full w-full object-contain object-[82%_46%] md:object-[78%_46%] c7-anim-photo-expose"
       />
 
       {/* Slight lift on the lower portion of the photo only — the ground
