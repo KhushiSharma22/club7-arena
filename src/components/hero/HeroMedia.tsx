@@ -1,36 +1,51 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 
 /**
- * The hero environment is the real Club 7 night aerial photograph — no
- * constructed/illustrated scenery. The photo already does the hard
- * work: the venue sits lit in the middle of genuine surrounding
- * darkness. Two things are layered on top of it:
+ * The hero environment is real Club 7 footage — no constructed/
+ * illustrated scenery. A looping video of the ground stands in for
+ * the still night-aerial photo used before; the photo stays on as the
+ * `<video>`'s poster, so it's still what's shown (and all that's ever
+ * downloaded) for anyone on `prefers-reduced-motion`. Two things are
+ * layered on top either way:
  *
  * 1. A static compositional gradient that lets that darkness bleed
  *    into the site background, so copy has a legible zone without a
  *    hard rectangle/card edge. Direction flips per breakpoint — side-on
  *    (desktop, text sits left) vs top-down (mobile, text sits below).
  * 2. A one-shot exposure ramp (CSS `filter: brightness/contrast`) on
- *    the image itself for the entrance — "very dark → lights visible →
- *    full exposure" — instead of a black scrim or fake lamp dots.
+ *    the footage itself for the entrance — "very dark → lights visible
+ *    → full exposure" — instead of a black scrim or fake lamp dots.
  *
  * No grain, no added vignette, no desaturation: the brief is explicit
- * that these are real venue photographs and should read as such.
+ * that these are real venue photographs/footage and should read as
+ * such.
  */
 type HeroMediaProps = {
+  videoSrc?: string;
   imageSrc?: string;
   imageAlt?: string;
 };
 
 export default function HeroMedia({
+  videoSrc = "/venue/hero-loop.mp4",
   imageSrc = "/venue/night-aerial.jpg",
   imageAlt = "Club 7's floodlit turf complex at night, Sector 89, Faridabad",
 }: HeroMediaProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Autoplay is driven from here rather than the `autoPlay` attribute
+  // so a `prefers-reduced-motion` visitor gets the still poster frame
+  // only — the video never starts, so it's also never fetched beyond
+  // its poster image.
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) return;
+    videoRef.current?.play().catch(() => {});
+  }, []);
 
   useEffect(() => {
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -63,13 +78,16 @@ export default function HeroMedia({
 
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-c7-bg-1">
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_44%] c7-anim-photo-expose"
+      <video
+        ref={videoRef}
+        src={videoSrc}
+        poster={imageSrc}
+        aria-label={imageAlt}
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover object-[center_44%] c7-anim-photo-expose"
       />
 
       {/* Slight lift on the lower portion of the photo only — the ground
