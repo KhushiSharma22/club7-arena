@@ -1,4 +1,3 @@
-import { isClientPreview } from "@/lib/preview-mode";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import PlayPageClient from "@/components/play/PlayPageClient";
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 export default function PlayPage() {
   return (
     <Suspense fallback={null}>
-      <PlayPageClient preview={isClientPreview()} />
+      <PlayPageClient />
     </Suspense>
   );
 }
