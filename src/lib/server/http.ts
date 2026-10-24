@@ -1,8 +1,10 @@
+import { isClientPreview } from "../preview-mode";
 import { cookies } from "next/headers";
 import { COOKIE, sessionAdmin } from "./auth";
 export class ApiError extends Error { constructor(public status: number, message: string) { super(message); } }
 export function json(data: unknown, status = 200) { return Response.json(data, { status, headers: { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" } }); }
 export async function handle(work: () => Promise<Response> | Response) {
+  if (isClientPreview()) return json({ error: "Online bookings and staff tools are not enabled on this preview. Contact Club 7 for availability." }, 503);
   try { return await work(); } catch (error) {
     if (error instanceof ApiError) return json({ error: error.message }, error.status);
     console.error("Club7 API failed:", error instanceof Error ? error.message : "Unknown error");

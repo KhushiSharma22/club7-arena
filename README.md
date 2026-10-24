@@ -58,3 +58,7 @@ Before launching, configure hosting, real accounts/rates, customer notifications
 ### Checks
 
 Run `npm run lint`, `npm test` and `npm run build -- --webpack`. Tests use a separate temporary database and cover authentication, overlaps, repeating schedules, pending holds, idempotency, stale pricing, capacity, approval, cancellation and origin/rate-limit checks.
+
+### Client presentation on Vercel
+
+Set `CLUB7_PREVIEW_MODE=1` for both the build and runtime of a dedicated client-preview project. This keeps the real SQLite backend disabled: the Play page offers sport-specific WhatsApp availability enquiries, staff pages show an unavailable notice, and API handlers return HTTP 503 before accessing the database. Marketing pages, photos, video and event/academy WhatsApp enquiries work normally. Never use an ephemeral filesystem for live customer bookings. A persistent host remains required for full operations.
