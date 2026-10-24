@@ -163,7 +163,7 @@ export default function EnquiryForm({
               />
               <FormRow
                 id="plan-date"
-                label="Preferred Date"
+                label="Preferred Date (optional)"
                 type="date"
                 min={toISODate(today)}
                 value={date}
@@ -179,7 +179,7 @@ export default function EnquiryForm({
               <textarea
                 id="plan-notes"
                 rows={3}
-                placeholder="Food, timing, anything else to mention."
+                placeholder={occasion === "Birthday" ? "Birthday age, favourite sport, food or cake plans…" : "Preferred games, food, timings or full venue hire…"}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 className="mt-3 max-h-32 w-full resize-none border-b border-c7-line/25 bg-transparent pb-2.5 font-body text-body text-c7-ink outline-none transition-colors placeholder:text-c7-ink-dim/50 focus:border-c7-red"

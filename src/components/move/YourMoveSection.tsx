@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRevealOnView } from "@/lib/useRevealOnView";
 import { DIRECTIONS_HREF } from "@/lib/constants";
-import { FILM_GRAIN_URL } from "@/lib/grain";
 
 /** Only what's actually verified sitewide — "Open 24 Hours" is scoped
  * explicitly to the playing facilities here, not the café, since the
@@ -54,29 +53,22 @@ export default function YourMoveSection() {
           </div>
 
           <div
-            className="relative mt-10 aspect-[3/4] w-full max-w-[300px] overflow-hidden bg-c7-bg-3 transition-[opacity,transform] duration-700 ease-out md:mt-0 md:max-w-[340px] md:justify-self-end"
+            className="entrance-photo relative mt-10 aspect-[3/4] w-full max-w-[480px] transition-[opacity,transform] duration-700 ease-out md:mt-0 md:max-w-[520px] md:justify-self-end"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(18px)",
               transitionDelay: visible ? "140ms" : "0ms",
             }}
           >
-            {/* Source is a native 430x758 photo — kept close to its own
-                resolution (max 340px) rather than stretched to fill a
-                much wider column, which was visibly softening it. */}
             <Image
-              src="/venue/entrance-signage.jpg"
+              src="/venue/entrance-video-still.jpg"
               alt="Club 7's entrance at night, Sector 89, Faridabad"
               fill
-              sizes="340px"
+              sizes="(min-width: 900px) 40vw, 100vw"
               quality={90}
-              className="object-cover"
-              style={{ objectPosition: "50% 46%", filter: "saturate(0.86) contrast(1.1) brightness(0.94) hue-rotate(4deg)" }}
+              className="object-contain"
             />
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
-              style={{ backgroundImage: `url("${FILM_GRAIN_URL}")`, backgroundSize: "120px 120px" }}
-            />
+
           </div>
         </div>
       </div>

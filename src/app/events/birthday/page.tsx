@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../events.css";
+import OccasionGuide from "@/components/events/OccasionGuide";
 import EventsHero from "@/components/events/EventsHero";
 import FullVenueHire from "@/components/events/FullVenueHire";
 import EventGallery from "@/components/events/EventGallery";
@@ -13,25 +14,26 @@ export const metadata: Metadata = {
 
 export default function BirthdayPage() {
   return (
-    <main className="events-page">
+    <main className="events-page birthday-page">
       <EventsHero
         eyebrow="Birthdays at Club 7"
-        lines={["Another year.", "A better plan."]}
-        intro="Your favourite people, a little competition, then cake. Give the group something better than another dinner reservation."
+        lines={["Big cheers.", "Bigger memories."]}
+        intro="Their favourite people. A game they love. And that big cake-cutting moment. Celebrate a birthday with room to play, cheer and be together."
         primary={{ label: "Plan the birthday", href: "#plan" }}
         secondary={{ label: "See the gallery", href: "#gallery" }}
-        image={{ src: "/venue/pickleball.jpg", alt: "Club 7's pickleball court, Sector 89, Faridabad" }}
+        image={{ src: "/birthday/cake-celebration.jpg", alt: "Friends gathered around a sports-themed birthday cake at Club 7" }}
         photoLabel="Cake can wait. Match point first."
         captionEyebrow="CLUB 7 / BIRTHDAYS"
         captionTitle="Play first. Cake after."
       />
       <FullVenueHire />
       <EventGallery />
+      <OccasionGuide kind="birthday" />
       <EnquiryForm
         occasion="Birthday"
         eyebrow="Let's make it happen"
         heading="Plan the birthday."
-        sub="Share a few details. We'll help you put the day together."
+        sub="Share your date and guest count. Add the birthday child’s age and any food or cake plans in the notes."
         headcountLabel="How Many People?"
         headcountPlaceholder="e.g. 15"
       />

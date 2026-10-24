@@ -7,7 +7,7 @@ type EventsHeroProps = {
   intro: string;
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
-  image: { src: string; alt: string; position?: string };
+  image: { src: string; alt: string; position?: string; sizes?: string };
   photoLabel: string;
   captionEyebrow: string;
   captionTitle: string;
@@ -68,7 +68,8 @@ export default function EventsHero({
           alt={image.alt}
           fill
           preload
-          sizes="(min-width: 900px) 55vw, 100vw"
+          quality={90}
+          sizes={image.sizes ?? "(min-width: 900px) 55vw, 100vw"}
           className="object-cover"
           style={image.position ? { objectPosition: image.position } : undefined}
         />

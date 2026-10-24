@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../events.css";
+import OccasionGuide from "@/components/events/OccasionGuide";
 import EventsHero from "@/components/events/EventsHero";
 import NightSequence from "@/components/events/NightSequence";
 import PeopleMoment from "@/components/events/PeopleMoment";
@@ -13,27 +14,28 @@ export const metadata: Metadata = {
 
 export default function CorporatePage() {
   return (
-    <main className="events-page">
+    <main className="events-page corporate-page">
       <EventsHero
         eyebrow="Corporate & Team Days"
-        lines={["The office", "escape."]}
-        intro="Less small talk, more friendly rivalry. Get the team out from behind their desks for a proper game — and a proper catch-up after."
+        lines={["Out of office.", "Into the game."]}
+        intro="Trade the meeting room for a match. Bring your colleagues together for cricket, football or pickleball—and keep the conversation going at the café."
         primary={{ label: "Plan the team day", href: "#plan" }}
         secondary={{ label: "How it works", href: "#how-it-works" }}
-        image={{ src: "/stock/last-goal-night.jpg", alt: "A floodlit football match at night — representative photo" }}
-        photoLabel="Set your status to: on the turf."
-        captionEyebrow="CLUB 7 / TEAM DAYS"
+        image={{ src: "/corporate/team-day-original.jpg", alt: "Colleagues celebrating their corporate cricket day together at Club 7", sizes: "90vw" }}
+        photoLabel="A team day, the Club 7 way."
+        captionEyebrow="ON THE TURF / AT CLUB 7"
         captionTitle="Team bonding, minus the trust falls."
       />
       <div id="how-it-works">
         <NightSequence />
       </div>
       <PeopleMoment />
+      <OccasionGuide kind="corporate" />
       <EnquiryForm
         occasion="Team Day"
         eyebrow="Let's make it happen"
         heading="Plan the team day."
-        sub="Share a few details. We'll help you put the day together."
+        sub="Share your date and headcount. We’ll discuss games, food and the details that make it your team’s day."
         headcountLabel="How Many People?"
         headcountPlaceholder="e.g. 25"
       />

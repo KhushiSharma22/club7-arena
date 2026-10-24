@@ -9,18 +9,19 @@ import { WHATSAPP_HREF } from "@/lib/constants";
 // hub page of its own (every occasion is its own page), so it expands
 // in place to its three pages rather than linking anywhere.
 const ITEMS = [
-  { label: "PLAY", href: "/play" },
+  { label: "HOME", href: "/" },
+  { label: "GAME ON", href: "/play" },
   {
-    label: "GROUP EVENTS",
+    label: "SQUAD PLANS",
     children: [
-      { label: "Birthdays", href: "/events/birthday" },
-      { label: "Corporate & Team Days", href: "/events/corporate" },
-      { label: "Tournaments", href: "/events/tournament" },
+      { label: "Birthday Scenes", href: "/events/birthday" },
+      { label: "Team Days", href: "/events/corporate" },
+      { label: "Tourney Time", href: "/events/tournament" },
     ],
   },
-  { label: "ACADEMY", href: "/academy" },
-  { label: "LOCATION", href: "/location" },
-  { label: "SOCIALS", href: "/socials" },
+  { label: "LEVEL UP", href: "/academy" },
+  { label: "FIND US", href: "/location" },
+  { label: "INSTA VIBES", href: "/socials" },
 ];
 
 const FOCUSABLE_SELECTOR =
@@ -86,7 +87,7 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
       }`}
       aria-hidden={!open}
     >
-      <div className="flex h-full flex-col px-edge py-6">
+      <div className="flex h-full flex-col overflow-y-auto px-edge py-6">
         <div className="flex items-center justify-between border-b border-c7-line/15 pb-6">
           <p className="font-body text-tag tracking-[0.24em] uppercase text-c7-ink-dim">
             Match Programme
@@ -111,12 +112,12 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
                   tabIndex={open ? 0 : -1}
                   onClick={() => setEventsOpen((v) => !v)}
                   aria-expanded={eventsOpen}
-                  className="group flex w-full items-baseline gap-4 py-4 text-left md:py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+                  className="group flex w-full items-baseline gap-4 py-2 text-left md:py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
                 >
                   <span className="font-body text-body-sm text-c7-ink-dim w-8 shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-display text-display-2 uppercase text-c7-ink transition-transform duration-200 group-hover:translate-x-3 group-hover:text-c7-red">
+                  <span className="font-display text-[clamp(1.65rem,5dvh,3.5rem)] uppercase text-c7-ink transition-transform duration-200 group-hover:translate-x-3 group-hover:text-c7-red">
                     {item.label}
                   </span>
                   <span aria-hidden="true" className={`ml-auto text-lg text-c7-ink-dim transition-transform duration-200 ${eventsOpen ? "-rotate-180" : ""}`}>
@@ -146,12 +147,12 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
                 href={item.href}
                 tabIndex={open ? 0 : -1}
                 onClick={onClose}
-                className="group flex items-baseline gap-4 py-4 md:py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+                className="group flex items-baseline gap-4 py-2 md:py-3 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
               >
                 <span className="font-body text-body-sm text-c7-ink-dim w-8 shrink-0">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-display text-display-2 uppercase text-c7-ink transition-transform duration-200 group-hover:translate-x-3 group-hover:text-c7-red">
+                <span className="font-display text-[clamp(1.65rem,5dvh,3.5rem)] uppercase text-c7-ink transition-transform duration-200 group-hover:translate-x-3 group-hover:text-c7-red">
                   {item.label}
                 </span>
               </a>

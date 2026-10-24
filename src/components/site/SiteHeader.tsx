@@ -12,17 +12,17 @@ import FixtureOverlay from "./FixtureOverlay";
  * of what was in it.
  */
 const NAV_LINKS = [
-  { label: "Academy", href: "/academy" },
-  { label: "Location", href: "/location" },
+  { label: "Level Up", href: "/academy" },
+  { label: "Find Us", href: "/location" },
 ];
 
 /** Group Events has no hub page of its own — every occasion is its own
  * page, so the nav link is a menu straight to the three of them rather
  * than a stop-off page that just repeats these same three links. */
 const EVENTS_LINKS = [
-  { label: "Birthdays", href: "/events/birthday" },
-  { label: "Corporate & Team Days", href: "/events/corporate" },
-  { label: "Tournaments", href: "/events/tournament" },
+  { label: "Birthday Scenes", href: "/events/birthday" },
+  { label: "Team Days", href: "/events/corporate" },
+  { label: "Tourney Time", href: "/events/tournament" },
 ];
 
 function GroupEventsMenu({ pathname }: { pathname: string }) {
@@ -81,7 +81,7 @@ function GroupEventsMenu({ pathname }: { pathname: string }) {
         aria-current={isEventsPage ? "page" : undefined}
         className="site-nav-link flex items-center gap-1.5 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
       >
-        Group Events
+        Squad Plans
         <span aria-hidden="true" className={`text-[9px] transition-transform duration-200 ${open ? "-rotate-180" : ""}`}>
           ▾
         </span>
@@ -162,18 +162,22 @@ export default function SiteHeader() {
           <Link href="/" className="font-display text-3xl md:text-4xl uppercase tracking-tight text-c7-ink leading-none">
             Club<span className="text-c7-red">7</span>
           </Link>
-          <span className="hidden xl:inline font-body text-tag tracking-[0.24em] uppercase text-c7-ink-dim">
+          <span className="hidden min-[1400px]:inline font-body text-tag tracking-[0.24em] uppercase text-c7-ink-dim">
             Sector 89 / FBD
           </span>
         </div>
 
-        <nav className="hidden items-center gap-5 md:flex lg:gap-7">
+        <nav aria-label="Main navigation" className="hidden items-center gap-4 min-[1100px]:flex lg:gap-5">
+          <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className="site-nav-link flex items-center gap-1.5 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim hover:text-c7-ink">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg>
+            Home
+          </Link>
           <a
             href="/play"
             aria-current={pathname === "/play" ? "page" : undefined}
             className="site-nav-link font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
           >
-            Play
+            Game On
           </a>
           <GroupEventsMenu pathname={pathname} />
           {NAV_LINKS.map((link) => (
@@ -188,28 +192,29 @@ export default function SiteHeader() {
           ))}
           <a
             href="/socials"
-            aria-label="Socials"
+            aria-label="Club 7 Instagram and socials"
             aria-current={pathname === "/socials" ? "page" : undefined}
-            className="site-nav-link text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+            className="site-nav-link flex items-center gap-2 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
           >
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" strokeWidth="1.8" />
               <circle cx="12" cy="12" r="4.6" stroke="currentColor" strokeWidth="1.8" />
               <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" />
             </svg>
+            <span>Insta Vibes</span>
           </a>
         </nav>
 
         <div className="flex items-center gap-3 md:gap-6">
           <a
             href="/play#book-enquiry"
-            className="hidden items-center gap-1.5 border border-c7-line/40 px-4 py-2 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink transition-colors hover:border-c7-red hover:text-c7-red md:inline-flex focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
+            className="hidden items-center gap-1.5 border border-c7-line/40 px-4 py-2 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink transition-colors hover:border-c7-red hover:text-c7-red min-[1100px]:inline-flex focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
           >
             Find a Slot <span aria-hidden="true">↗</span>
           </a>
           <a
             href="/play#book-enquiry"
-            className="md:hidden inline-flex items-center font-body text-body-sm font-medium uppercase tracking-[0.06em] text-c7-ink-dim"
+            className="min-[1100px]:hidden inline-flex items-center font-body text-body-sm font-medium uppercase tracking-[0.06em] text-c7-ink-dim"
           >
             Find a Slot
           </a>
@@ -221,7 +226,7 @@ export default function SiteHeader() {
             aria-expanded={open}
             aria-controls="fixture-overlay"
             aria-label="Open menu"
-            className="md:hidden flex h-9 w-9 flex-col items-center justify-center gap-1.5 border border-c7-line/30"
+            className="min-[1100px]:hidden flex h-9 w-9 flex-col items-center justify-center gap-1.5 border border-c7-line/30"
           >
             <span className="block h-px w-4 bg-c7-ink" />
             <span className="block h-px w-2.5 self-start ml-[11px] bg-c7-ink" />

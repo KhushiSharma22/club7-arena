@@ -55,3 +55,144 @@
  .birthday-gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
  .birthday-gallery-feature { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/10; height: auto; }
 }
+
+/* Keep real group photography wide so every teammate stays in the frame. */
+.corporate-page .events-hero { grid-template-columns: 1fr; gap: 42px; }
+.corporate-page .events-hero-copy { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8%; max-width: none; }
+.corporate-page .events-hero-copy .events-eyebrow { grid-column: 1; }
+.corporate-page .events-hero h1 { grid-column: 1; grid-row: 2 / 5; }
+.corporate-page .events-intro { grid-column: 2; grid-row: 2; margin-top: 20px; }
+.corporate-page .events-actions { grid-column: 2; grid-row: 3; margin-top: 24px; }
+.corporate-page .events-location { grid-column: 2; grid-row: 4; margin-top: 22px; }
+.corporate-page .events-hero-image { width: 100%; aspect-ratio: 16/9; height: auto; min-height: 0; }
+.corporate-page .events-hero-image img { object-position: center 42%; }
+.corporate-page .events-image-shade { background: linear-gradient(180deg, #03110825, transparent 24%, transparent 68%, #031108dc); }
+.corporate-page .events-hero-image strong { font-size: clamp(22px, 3vw, 36px); }
+.corporate-page .events-experience { grid-template-columns: .85fr 1fr; gap: 12%; }
+.corporate-page .corporate-video { height: auto; width: min(100%, 400px); justify-self: center; background: #102017; }
+.corporate-video video { width: 100%; aspect-ratio: 9/16; display: block; }
+.corporate-video figcaption { padding: 17px 20px; font-size: 12px; color: var(--events-muted); }
+.corporate-moments { padding-block: 42px 96px; }
+.corporate-moments-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; border-top: 1px solid #ffffff25; padding-top: 38px; }
+.corporate-moments-heading > p { max-width: 320px; }
+.corporate-photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 36px; }
+.corporate-photo { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 6px; }
+.corporate-photo-grid figcaption { padding-top: 20px; }
+.corporate-photo-grid h3 { font-family: var(--font-display); font-size: 28px; text-transform: uppercase; }
+.corporate-photo-grid figcaption p { margin-top: 7px; font-size: 13px; color: var(--events-muted); }
+@media (max-width: 899px) {
+ .corporate-page .events-hero-copy { display: block; }
+ .corporate-page .events-hero-image { aspect-ratio: 4/3; min-height: 0; }
+ .corporate-page .events-hero-image img { object-fit: contain; }
+ .corporate-page .events-hero-image figcaption { bottom: 16px; left: 16px; }
+ .corporate-page .events-hero-image strong { font-size: 23px; margin-top: 6px; }
+ .corporate-page .events-photo-label { top: 12px; left: 12px; }
+ .corporate-page .events-experience { grid-template-columns: 1fr; gap: 32px; }
+ .corporate-page .corporate-video { width: min(100%, 340px); }
+ .corporate-moments-heading { display: block; }
+ .corporate-photo-grid { grid-template-columns: 1fr; gap: 32px; }
+ .corporate-moments { padding-bottom: 64px; }
+}
+.corporate-page .events-hero-image img,
+.corporate-page .corporate-photo img { filter: brightness(1.025) contrast(1.025) saturate(.96); }
+
+/* Portrait birthday media keeps the cake and guests in their original frame. */
+.birthday-page .events-hero { grid-template-columns: 1.1fr .9fr; }
+.birthday-page .events-hero-image { aspect-ratio: 9/16; height: auto; min-height: 0; width: 100%; max-width: 460px; justify-self: end; }
+.birthday-page .events-hero-image img { object-fit: contain; object-position: center; filter: brightness(1.025) contrast(1.02) saturate(.97); }
+.birthday-page .events-image-shade { background: linear-gradient(180deg, #03110840, transparent 18%, transparent 80%, #031108bb); }
+.birthday-page .events-hero-image figcaption { bottom: 22px; left: 22px; }
+.birthday-page .events-hero-image strong { font-size: 28px; }
+.birthday-story { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 9%; padding-block: 70px 96px; scroll-margin-top: 100px; }
+.birthday-story-copy > .events-muted { max-width: 440px; }
+.birthday-testimonial { border-top: 1px solid #ffffff25; margin-top: 36px; padding-top: 28px; }
+.birthday-testimonial blockquote { margin-block: 24px; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.65; color: #eee9dc; }
+.birthday-testimonial figcaption { display: flex; gap: 13px; align-items: center; }
+.birthday-review-avatar { display: grid; place-items: center; width: 42px; height: 42px; background: #b9c7ad; color: #102017; border-radius: 50%; }
+.birthday-testimonial strong { font-size: 14px; font-weight: 500; }
+.birthday-testimonial a { display: block; width: fit-content; font-size: 12px; color: var(--events-muted); margin-top: 5px; text-decoration: underline; text-underline-offset: 4px; }
+.birthday-film { width: 100%; max-width: 420px; justify-self: end; overflow: hidden; border-radius: 6px; background: #102017; }
+.birthday-film video { display: block; width: 100%; aspect-ratio: 9/16; }
+.birthday-film > figcaption { padding: 17px 20px; font-size: 12px; color: var(--events-muted); }
+@media (max-width: 899px) {
+ .birthday-page .events-hero, .birthday-story { grid-template-columns: 1fr; }
+ .birthday-page .events-hero-image { justify-self: center; max-width: 420px; min-height: 0; }
+ .birthday-story { gap: 36px; padding-block: 40px 64px; }
+ .birthday-film { justify-self: center; max-width: 380px; }
+}
+
+/* Shared editorial planning sections: concrete choices, then useful answers. */
+.occasion-guide, .academy-learning { padding-block: 64px 80px; }
+.occasion-heading { display: flex; justify-content: space-between; align-items: end; gap: 48px; border-top: 1px solid #ffffff25; padding-top: 34px; }
+.occasion-heading h2 { max-width: 650px; }
+.occasion-heading > p { max-width: 340px; }
+.occasion-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 44px; }
+.occasion-steps article { border-top: 1px solid #ffffff20; padding-top: 22px; }
+.occasion-steps article > span { color: #bdcaae; font-size: 11px; letter-spacing: .15em; }
+.occasion-steps h3 { font-family: var(--font-display); font-size: clamp(25px, 2.2vw, 32px); text-transform: uppercase; line-height: 1.1; margin-top: 18px; }
+.occasion-steps article p { font-size: 14px; line-height: 1.8; color: var(--events-muted); margin-top: 12px; }
+.occasion-faq { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 64px; }
+.occasion-faq > p { padding-top: 20px; }
+.occasion-faq details { border-top: 1px solid #ffffff25; }
+.occasion-faq details:last-child { border-bottom: 1px solid #ffffff25; }
+.occasion-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; cursor: pointer; list-style: none; padding: 22px 0; font-size: 15px; line-height: 1.5; }
+.occasion-faq summary::-webkit-details-marker { display: none; }
+.occasion-faq summary span { color: #b9c7ad; font-size: 24px; transition: transform .2s; }
+.occasion-faq details[open] summary span { transform: rotate(45deg); }
+.occasion-faq details p { max-width: 650px; font-size: 14px; color: var(--events-muted); line-height: 1.8; padding-bottom: 24px; }
+.occasion-faq summary:focus-visible { outline: 2px solid #b9c7ad; outline-offset: 5px; }
+.events-page .events-planner { display: grid; grid-template-columns: .85fr 1.15fr; gap: 8%; }
+.events-page .events-planner > div:nth-child(3) { margin-top: 0; max-width: none; }
+.events-page .events-planner .events-plan-form { gap: 26px; }
+.events-plan-form input { min-width: 0; }
+.academy-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 9%; align-items: center; padding-top: calc(var(--header-height, 90px) + 48px); padding-bottom: 72px; }
+.academy-hero h1 { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(3.5rem, 6.5vw, 6.8rem); line-height: .96; margin-top: 28px; }
+.academy-hero h1 span { color: #b9c7ad; }
+.academy-hero-photo { width: 100%; max-width: 440px; aspect-ratio: 3/4; position: relative; overflow: hidden; border-radius: 7px; justify-self: end; }
+.academy-hero-photo img { object-fit: cover; object-position: 50% 59%; }
+.academy-hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, #06110bd9); pointer-events: none; }
+.academy-hero-photo figcaption { position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 1; }
+.academy-hero-photo figcaption > span { font-size: 10px; letter-spacing: .15em; }
+.academy-hero-photo strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 30px; line-height: 1.05; margin-top: 10px; text-transform: uppercase; }
+.academy-session { display: grid; grid-template-columns: .9fr 1.1fr; gap: 12%; align-items: start; padding-block: 36px 80px; scroll-margin-top: 120px; }
+.academy-session-film { max-width: 400px; width: 100%; overflow: hidden; border-radius: 6px; background: #102017; }
+.academy-session-film video { display: block; width: 100%; aspect-ratio: 9/16; }
+.academy-session-film figcaption, .academy-practice-photo figcaption { font-size: 12px; color: var(--events-muted); padding: 16px 18px; }
+.academy-session-copy h2 { font-size: clamp(3rem, 5vw, 5rem); }
+.academy-session-copy h2 span { color: #b9c7ad; }
+.academy-session-copy > p { max-width: 410px; }
+.academy-practice-photo { margin-top: 32px; max-width: 330px; }
+.academy-practice-photo img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; object-position: center 62%; border-radius: 5px; }
+.academy-practice-photo figcaption { padding-left: 0; }
+.academy-enquiry { display: grid; grid-template-columns: 1.1fr .9fr; gap: 9%; margin-block: 30px 80px; scroll-margin-top: 120px; }
+.academy-enquiry > div { border-top: 1px solid #ffffff25; padding-top: 30px; }
+.academy-enquiry > div > p { max-width: 430px; }
+.academy-enquiry form { background: #102017; border: 1px solid #ffffff25; padding: 32px; border-radius: 7px; display: flex; flex-direction: column; gap: 14px; }
+.academy-enquiry label { font-size: 12px; letter-spacing: .06em; }
+.academy-enquiry label span { color: var(--events-muted); }
+.academy-enquiry input, .academy-enquiry select { width: 100%; min-width: 0; background: #06110b; color: #eee9dc; border: 1px solid #ffffff40; border-radius: 4px; padding: 14px; font-size: 14px; color-scheme: dark; margin-bottom: 10px; }
+.academy-enquiry input:focus-visible, .academy-enquiry select:focus-visible { outline: 2px solid #b9c7ad; outline-offset: 3px; }
+.academy-enquiry .events-muted { margin-top: 0; font-size: 12px; }
+.academy-contact-note { color: #b9c7ad; font-size: 12px; line-height: 1.7; margin-top: 30px; }
+@media (max-width: 899px) {
+ .occasion-heading { display: block; }
+ .occasion-heading > p { max-width: 540px; margin-top: 22px; }
+ .occasion-steps { grid-template-columns: 1fr; gap: 26px; margin-top: 30px; }
+ .occasion-steps article { display: grid; grid-template-columns: 30px 1fr; column-gap: 12px; }
+ .occasion-steps article > span { padding-top: 4px; }
+ .occasion-steps h3 { margin-top: 0; }
+ .occasion-steps article p { grid-column: 2; margin-top: 10px; }
+ .occasion-faq { grid-template-columns: 1fr; gap: 18px; margin-top: 40px; }
+ .events-page .events-planner { display: block; }
+ .events-page .events-planner > div:nth-child(3) { margin-top: 32px; }
+ .academy-hero, .academy-session, .academy-enquiry { grid-template-columns: 1fr; gap: 36px; }
+ .academy-hero { padding-top: calc(var(--header-height, 90px) + 32px); padding-bottom: 40px; }
+ .academy-hero-photo { justify-self: center; max-width: 440px; }
+ .academy-session-film { justify-self: center; max-width: 360px; }
+ .academy-session-copy { order: -1; }
+ .academy-practice-photo { max-width: none; }
+ .academy-practice-photo img { aspect-ratio: 4/3; }
+ .academy-learning, .occasion-guide { padding-block: 40px 56px; }
+ .academy-enquiry form { padding: 24px; }
+ .academy-enquiry { margin-bottom: 56px; }
+}
