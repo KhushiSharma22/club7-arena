@@ -109,6 +109,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <SiteHeader />
         {children}
+        <footer className="site-contact-footer"><span>Club 7 · Sector 89, Faridabad</span><a href="tel:+919911046717">Call us: 9911046717</a><a href="https://wa.me/919911046717" target="_blank" rel="noopener noreferrer">WhatsApp: 9911046717 ↗</a></footer>
         <WhatsAppFloat />
       </body>
     </html>

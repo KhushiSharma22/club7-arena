@@ -12,7 +12,7 @@ import FixtureOverlay from "./FixtureOverlay";
  * of what was in it.
  */
 const NAV_LINKS = [
-  { label: "Level Up", href: "/academy" },
+  { label: "Coaching", href: "/academy" },
   { label: "Find Us", href: "/location" },
 ];
 
@@ -22,7 +22,7 @@ const NAV_LINKS = [
 const EVENTS_LINKS = [
   { label: "Birthday Scenes", href: "/events/birthday" },
   { label: "Team Days", href: "/events/corporate" },
-  { label: "Tourney Time", href: "/events/tournament" },
+  { label: "Tournaments", href: "/events/tournament" },
 ];
 
 function GroupEventsMenu({ pathname }: { pathname: string }) {

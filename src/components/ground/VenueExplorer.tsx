@@ -5,7 +5,7 @@ import Image from "next/image";
 import { HOTSPOTS, type HotspotId } from "@/lib/venue-map-data";
 
 const AERIAL = {
-  src: "/venue/night-aerial.jpg",
+  src: "/venue/ground-cleaned.png",
   alt: "Aerial view of Club 7's floodlit venue at night, Sector 89, Faridabad",
   position: "center 44%",
 };

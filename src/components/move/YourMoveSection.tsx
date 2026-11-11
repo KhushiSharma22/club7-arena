@@ -39,6 +39,7 @@ export default function YourMoveSection() {
               ))}
             </div>
 
+            <a href="tel:+919911046717" className="visit-phone">Call Club 7 · 9911046717</a>
             <a
               href={DIRECTIONS_HREF}
               target="_blank"

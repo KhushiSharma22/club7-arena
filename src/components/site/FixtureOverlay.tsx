@@ -16,10 +16,10 @@ const ITEMS = [
     children: [
       { label: "Birthday Scenes", href: "/events/birthday" },
       { label: "Team Days", href: "/events/corporate" },
-      { label: "Tourney Time", href: "/events/tournament" },
+      { label: "Tournaments", href: "/events/tournament" },
     ],
   },
-  { label: "LEVEL UP", href: "/academy" },
+  { label: "COACHING", href: "/academy" },
   { label: "FIND US", href: "/location" },
   { label: "INSTA VIBES", href: "/socials" },
 ];
