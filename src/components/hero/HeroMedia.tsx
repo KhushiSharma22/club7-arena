@@ -75,7 +75,7 @@ export default function HeroMedia({
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-c7-bg-1">
+    <div ref={containerRef} className="home-hero-media absolute inset-0 overflow-hidden bg-c7-bg-1">
       <video
         ref={videoRef}
         src={videoSrc}
@@ -97,7 +97,7 @@ export default function HeroMedia({
         style={{ background: "linear-gradient(90deg, var(--color-c7-bg-1) 0%, rgba(6,17,11,.92) 22%, rgba(6,17,11,.45) 48%, rgba(6,17,11,.12) 76%, var(--color-c7-bg-1) 100%)" }}
       />
       <div
-        className="pointer-events-none absolute inset-0 md:hidden"
+        className="home-hero-mobile-shade pointer-events-none absolute inset-0 md:hidden"
         style={{ background: "linear-gradient(180deg, rgba(6,17,11,.18) 0%, rgba(6,17,11,.12) 28%, rgba(6,17,11,.8) 57%, var(--color-c7-bg-1) 88%)" }}
       />
 

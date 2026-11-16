@@ -112,10 +112,10 @@ export default function VenueExplorer() {
           </div>
         </div>
 
-        {/* Info panel — fixed min-height so switching hotspots never
-            shifts the layout beneath it; crossfades content in ~250ms. */}
-        <div className="relative mt-6 min-h-[280px] md:mt-0 md:min-h-[360px]">
-          <div key={activeId} className="c7-anim-reveal absolute inset-0 [animation-duration:250ms]">
+        {/* Keep details in normal flow so images and links reserve their full
+            height before the facility controls, including on narrow screens. */}
+        <div className="venue-detail relative mt-6 min-h-[280px] md:mt-0 md:min-h-[360px]">
+          <div key={activeId} className="venue-detail-content c7-anim-reveal relative [animation-duration:250ms]">
             <p className="font-body text-tag tracking-[0.24em] uppercase text-c7-red">{active.label}</p>
             <p className="mt-2 font-body text-body-lg text-c7-ink/90">{active.fact}</p>
 
