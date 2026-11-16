@@ -25,7 +25,7 @@ const SITE_DESCRIPTION =
   "Box cricket, 7-a-side football, pickleball, cricket academy and cafe. Open 24 hours in Sector 89, Faridabad.";
 // Real venue photography, not a designed OG card — matches how the
 // site itself never fabricates imagery.
-const OG_IMAGE = "/venue/night-aerial.jpg";
+const OG_IMAGE = "/venue/night-aerial-clean.webp";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

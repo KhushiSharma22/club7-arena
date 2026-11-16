@@ -33,7 +33,7 @@ export const HOTSPOTS: Hotspot[] = [
     y: 52,
     box: { left: 30, top: 38, width: 34, height: 30 },
     fact: "Two turfs, shared with football on the same ground.",
-    image: { src: "/venue/turf-top-down-night.jpg", alt: "Top-down view of Club 7's floodlit cricket turf at night", position: "65% 50%" },
+    image: { src: "/venue/turf-top-down-night-clean.webp", alt: "Top-down view of Club 7's floodlit cricket turf at night", position: "65% 50%" },
     playHref: "/play?sport=cricket",
   },
   {
@@ -53,7 +53,7 @@ export const HOTSPOTS: Hotspot[] = [
     y: 64,
     box: { left: 66, top: 56, width: 20, height: 16 },
     fact: "A dedicated court, separate from the main turf.",
-    image: { src: "/venue/pickleball.jpg", alt: "Club 7's floodlit pickleball court at night", position: "50% 55%" },
+    image: { src: "/venue/pickleball-clean.webp", alt: "Club 7's floodlit pickleball court at night", position: "50% 55%" },
     playHref: "/play?sport=pickleball",
   },
   {

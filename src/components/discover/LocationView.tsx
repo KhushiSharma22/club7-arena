@@ -21,7 +21,7 @@ export default function LocationView() {
         <div className="destination-visual">
           <div className="destination-toolbar"><span>SECTOR 89 / FBD</span><div role="group" aria-label="Location view"><button aria-pressed={view === "map"} onClick={() => setView("map")}>Map</button><button aria-pressed={view === "venue"} onClick={() => setView("venue")}>The ground</button></div></div>
           <div className="destination-frame">
-            {view === "map" ? <iframe loading="lazy" title="Google Maps — Club 7, Sector 89, Faridabad" src={`https://www.google.com/maps?q=${query}&output=embed`} allowFullScreen referrerPolicy="strict-origin-when-cross-origin" /> : <Image src="/venue/night-aerial.jpg" alt="Club 7's illuminated grounds from above" fill sizes="(min-width: 900px) 65vw, 100vw" className="object-cover" />}
+            {view === "map" ? <iframe loading="lazy" title="Google Maps — Club 7, Sector 89, Faridabad" src={`https://www.google.com/maps?q=${query}&output=embed`} allowFullScreen referrerPolicy="strict-origin-when-cross-origin" /> : <Image src="/venue/night-aerial-clean.webp" alt="Club 7's illuminated grounds from above" fill sizes="(min-width: 900px) 65vw, 100vw" className="object-cover" />}
           </div>
           <div className="destination-map-footer"><span>{view === "map" ? "Explore the area. Find your way here." : "The destination, after dark."}</span><a href={maps} target="_blank" rel="noopener noreferrer">Open Google Maps ↗</a></div>
         </div>

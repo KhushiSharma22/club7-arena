@@ -58,7 +58,7 @@ export const PLAY_SPORTS: PlaySport[] = [
       { label: "Location", value: "Sector 89" },
     ],
     image: {
-      src: "/venue/turf-top-down-night.jpg",
+      src: "/venue/turf-top-down-night-clean.webp",
       position: "62% 48%",
       zoom: 1.05,
       alt: "Top-down view of Club 7's floodlit cricket pitch at night",
@@ -92,7 +92,7 @@ export const PLAY_SPORTS: PlaySport[] = [
       { label: "Location", value: "Sector 89" },
     ],
     image: {
-      src: "/venue/pickleball.jpg",
+      src: "/venue/pickleball-clean.webp",
       position: "50% 60%",
       alt: "Club 7's pickleball court in daylight",
     },

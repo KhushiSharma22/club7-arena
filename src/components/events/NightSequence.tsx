@@ -9,8 +9,8 @@ export default function NightSequence() {
   return (
     <section className="events-experience events-container">
       <figure className="events-experience-image corporate-video">
-        <video controls playsInline preload="none" poster="/corporate/team-cricket-poster.jpg" aria-label="A night cricket game at Club 7">
-          <source src="/corporate/team-cricket.mp4" type="video/mp4" />
+        <video controls playsInline preload="none" poster="/corporate/team-cricket-clean-poster.webp" aria-label="A night cricket game at Club 7">
+          <source src="/corporate/team-cricket-clean.mp4" type="video/mp4" />
           Your browser does not support video playback.
         </video>
         <figcaption>Under the lights. In good company.</figcaption>

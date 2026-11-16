@@ -11,12 +11,12 @@
 export type GalleryImage = { src: string; alt: string; position: string };
 
 export const BIRTHDAY_GALLERY: GalleryImage[] = [
-  { src: "/venue/pickleball.jpg", alt: "Club 7's pickleball court — placeholder, real birthday photos coming soon", position: "50% 55%" },
+  { src: "/venue/pickleball-clean.webp", alt: "Club 7's pickleball court — placeholder, real birthday photos coming soon", position: "50% 55%" },
   { src: "/stock/last-goal-night.jpg", alt: "A floodlit match at night — placeholder, real birthday photos coming soon", position: "30% 55%" },
   { src: "/stock/cafe-porch.jpg", alt: "The café seating area — placeholder, real birthday photos coming soon", position: "50% 45%" },
-  { src: "/venue/turf-top-down-night.jpg", alt: "Club 7's floodlit turf from above — placeholder, real birthday photos coming soon", position: "60% 48%" },
+  { src: "/venue/turf-top-down-night-clean.webp", alt: "Club 7's floodlit turf from above — placeholder, real birthday photos coming soon", position: "60% 48%" },
   { src: "/stock/warmup-turf.jpg", alt: "A group warming up together — placeholder, real birthday photos coming soon", position: "50% 55%" },
-  { src: "/venue/night-aerial.jpg", alt: "Club 7's grounds lit up at night — placeholder, real birthday photos coming soon", position: "center 44%" },
+  { src: "/venue/night-aerial-clean.webp", alt: "Club 7's grounds lit up at night — placeholder, real birthday photos coming soon", position: "center 44%" },
 ];
 
 export type TournamentSport = "Box Cricket" | "Football" | "Pickleball" | "Not sure yet";

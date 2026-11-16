@@ -25,7 +25,7 @@ export default function TournamentPage() {
         intro="Box cricket, football or pickleball — get your team on our list for the next tournament at Club 7."
         primary={{ label: "Register your team", href: "#register" }}
         secondary={{ label: "How it works", href: "#how-it-works" }}
-        image={{ src: "/venue/turf-top-down-night.jpg", alt: "Top-down view of Club 7's floodlit cricket turf at night" }}
+        image={{ src: "/venue/turf-top-down-night-clean.webp", alt: "Top-down view of Club 7's floodlit cricket turf at night" }}
         photoLabel="One ground. Every team."
         captionEyebrow="CLUB 7 / TOURNAMENTS"
         captionTitle="Get your team on the list."
