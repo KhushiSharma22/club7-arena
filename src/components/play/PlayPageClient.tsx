@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PLAY_SPORTS, type PlaySportId } from "@/lib/play-data";
+import WhatsAppBookingFlow from "./WhatsAppBookingFlow";
 import BookingFlow from "./BookingFlow";
 import "@/styles/booking.css";
 
@@ -17,7 +18,7 @@ import "@/styles/booking.css";
  * its own history entry — otherwise there'd be nothing for back/
  * forward to actually navigate through.
  */
-export default function PlayPageClient() {
+export default function PlayPageClient({ manual = false }: { manual?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -30,5 +31,6 @@ export default function PlayPageClient() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
+  if (manual) return <WhatsAppBookingFlow activeId={activeId} onSelect={handleSelect} />;
   return <BookingFlow activeId={activeId} onSelect={handleSelect} />;
 }

@@ -62,3 +62,10 @@ Run `npm run lint`, `npm test` and `npm run build -- --webpack`. Tests use a sep
 ### Client presentation on Vercel
 
 Set `CLUB7_PREVIEW_MODE=1` for both the build and runtime of a dedicated client-preview project. This keeps the real SQLite backend disabled: the original Play booking interface remains visible, staff pages show an unavailable notice, and API handlers return HTTP 503 before accessing the database. Live inventory and booking submission remain unavailable on this presentation deployment. Marketing pages, photos, video and event/academy WhatsApp enquiries work normally. Never use an ephemeral filesystem for live customer bookings. A persistent host remains required for full operations.
+
+
+### Temporary WhatsApp bookings
+
+Set `CLUB7_BOOKING_MODE=whatsapp` at build time and runtime to use the manual booking request form. It opens a WhatsApp draft to Club 7 (9911046717), including sport, preferred date/time, duration and contact details. The visitor must tap Send; availability, price and payment are confirmed by the team. Event, tournament and coaching forms also open editable WhatsApp drafts.
+
+Remove this switch and rebuild to restore the original integrated booking flow after the persistent backend and payment gateway are ready. `CLUB7_PREVIEW_MODE=1` continues to disable unavailable database APIs on the temporary Vercel deployment.

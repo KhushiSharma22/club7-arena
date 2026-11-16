@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PlayPage() {
   return (
     <Suspense fallback={null}>
-      <PlayPageClient />
+      <PlayPageClient manual={process.env.CLUB7_BOOKING_MODE === "whatsapp"} />
     </Suspense>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import WhatsAppDraft from "@/components/site/WhatsAppDraft";
 import { useState } from "react";
 import type { ChangeEvent, FormEvent, InputHTMLAttributes } from "react";
 import { useRevealOnView } from "@/lib/useRevealOnView";
@@ -59,7 +60,7 @@ export default function TournamentForm() {
   const [timing, setTiming] = useState<(typeof TOURNAMENT_TIMING)[number] | "">("");
   const [players, setPlayers] = useState("");
   const [errors, setErrors] = useState<Errors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [draft, setDraft] = useState("");
 
   function validate(): Errors {
     const next: Errors = {};
@@ -69,7 +70,7 @@ export default function TournamentForm() {
       next.phone = "Add a valid phone number.";
     }
     if (!sport) next.sport = "Choose a sport.";
-    if (!squad.trim()) next.squad = "How many players in your squad?";
+    if (!/^\d+$/.test(squad.trim()) || Number(squad) < 1) next.squad = "Enter the number of players (1 or more).";
     return next;
   }
 
@@ -95,8 +96,9 @@ export default function TournamentForm() {
       players.trim() ? `Player names: ${players.trim()}` : null,
     ].filter(Boolean);
 
-    window.open(whatsappHref(lines.join("\n")), "_blank", "noopener,noreferrer");
-    setSubmitted(true);
+    const href = whatsappHref(lines.join("\n"));
+    window.open(href, "_blank", "noopener,noreferrer");
+    setDraft(href);
   }
 
   return (
@@ -124,15 +126,8 @@ export default function TournamentForm() {
         className="mt-12 max-w-xl transition-[opacity,transform] duration-700 ease-out md:mt-14"
         style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: visible ? "140ms" : "0ms" }}
       >
-        {submitted ? (
-          <div aria-live="polite">
-            <p className="font-display uppercase leading-[0.98] text-c7-ink text-[clamp(2rem,3.2vw,2.75rem)]">
-              Team Listed ↗
-            </p>
-            <p className="mt-4 font-body text-body-lg text-c7-ink/85">
-              We&apos;ve opened WhatsApp with your team&apos;s details, ready for you to send — nothing has been sent until you do.
-            </p>
-          </div>
+        {draft ? (
+          <WhatsAppDraft href={draft} onEdit={() => setDraft("")} />
         ) : (
           <form onSubmit={handleSubmit} noValidate className="events-plan-form flex flex-col gap-y-9">
             <div className="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2">
