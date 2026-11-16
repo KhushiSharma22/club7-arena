@@ -39,7 +39,12 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
 
   useEffect(() => {
     if (!open) return;
+    const trigger = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
+    document.documentElement.classList.add("site-menu-open");
+    const background = Array.from(document.querySelectorAll<HTMLElement>("body > header, body > main, body > footer"));
+    const previousInert = background.map(el => el.inert);
+    background.forEach(el => { el.inert = true; });
     const previousOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
 
@@ -69,6 +74,9 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
     document.addEventListener("keydown", handleKey);
     return () => {
       document.documentElement.style.overflow = previousOverflow;
+      document.documentElement.classList.remove("site-menu-open");
+      background.forEach((el, i) => { el.inert = previousInert[i]; });
+      trigger?.focus();
       document.removeEventListener("keydown", handleKey);
     };
   }, [open, onClose]);
@@ -80,15 +88,16 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Site menu"
-      className={`c7-overlay-panel fixed inset-0 z-[60] bg-c7-bg-1 transition-[clip-path] duration-300 ease-out ${
+      className={`site-menu-panel c7-overlay-panel fixed inset-0 z-[80] bg-c7-bg-1 transition-[clip-path] duration-300 ease-out ${
         open
           ? "[clip-path:inset(0_0_0%_0)]"
           : "pointer-events-none [clip-path:inset(0_0_100%_0)]"
       }`}
       aria-hidden={!open}
+      inert={!open}
     >
-      <div className="flex h-full flex-col overflow-y-auto px-edge py-6">
-        <div className="flex items-center justify-between border-b border-c7-line/15 pb-6">
+      <div className="site-menu-shell">
+        <div className="site-menu-top">
           <p className="font-body text-tag tracking-[0.24em] uppercase text-c7-ink-dim">
             Match Programme
           </p>
@@ -103,7 +112,7 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
           </button>
         </div>
 
-        <nav className="flex-1 flex flex-col justify-center divide-y divide-c7-line/15">
+        <nav aria-label="Mobile navigation" className="site-menu-links">
           {ITEMS.map((item, i) =>
             item.children ? (
               <div key={item.label}>
@@ -160,7 +169,7 @@ export default function FixtureOverlay({ open, onClose }: FixtureOverlayProps) {
           )}
         </nav>
 
-        <div className="flex flex-col sm:flex-row gap-3 border-t border-c7-line/15 pt-6">
+        <div className="site-menu-actions">
           <a
             href="/play#book-enquiry"
             tabIndex={open ? 0 : -1}

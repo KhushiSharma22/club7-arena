@@ -2,6 +2,7 @@
 @import "../styles/tokens.css";
 @import "../styles/motion.css";
 @import "../styles/refinements.css";
+@import "../styles/responsive.css";
 
 html {
   scroll-behavior: smooth;

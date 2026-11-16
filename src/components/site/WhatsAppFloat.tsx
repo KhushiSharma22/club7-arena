@@ -1,16 +1,37 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { WHATSAPP_HREF } from "@/lib/constants";
 
 /** Sitewide floating contact button, pinned to the side on every page —
  * the one always-available way to reach Club 7 directly, independent
  * of whichever booking flow a visitor is or isn't in. */
 export default function WhatsAppFloat() {
+  const pathname = usePathname();
+  const [formState, setFormState] = useState({ pathname: "", visible: false });
+  const formVisible = formState.pathname === pathname && formState.visible;
+  useEffect(() => {
+    const forms = Array.from(document.querySelectorAll("main form"));
+    const visibleForms = new Set<Element>();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleForms.add(entry.target);
+        else visibleForms.delete(entry.target);
+      });
+      setFormState({ pathname, visible: visibleForms.size > 0 });
+    });
+    forms.forEach(form => observer.observe(form));
+    return () => observer.disconnect();
+  }, [pathname]);
   return (
     <a
       href={WHATSAPP_HREF}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Club 7 on WhatsApp"
-      className="fixed bottom-24 right-5 z-[70] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red md:bottom-7 md:right-7"
+      data-form-visible={formVisible}
+      className="site-whatsapp fixed bottom-24 right-5 z-[30] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red md:bottom-7 md:right-7"
     >
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path

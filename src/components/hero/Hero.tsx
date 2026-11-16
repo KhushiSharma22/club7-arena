@@ -3,7 +3,7 @@ import HeroMedia from "./HeroMedia";
 
 export default function Hero() {
   return (
-    <section className="relative isolate min-h-[80dvh] overflow-hidden md:min-h-[74dvh]">
+    <section className="home-hero relative isolate min-h-[80dvh] overflow-hidden md:min-h-[74dvh]">
       <HeroMedia />
 
       {/* A bounded content grid, shared with the header, so wide
@@ -15,7 +15,7 @@ export default function Hero() {
           own height below eats into flex-1's share of the viewport —
           which is what pulls the composition slightly above true
           centre there, no magic-number offsets needed. */}
-      <div className="relative z-10 mx-auto flex min-h-[80dvh] w-full max-w-[1600px] flex-col px-edge pb-12 pt-28 md:min-h-[74dvh] md:pb-14">
+      <div className="home-hero-content relative z-10 mx-auto flex min-h-[80dvh] w-full max-w-[1600px] flex-col px-edge pb-12 pt-28 md:min-h-[74dvh] md:pb-14">
         <div className="flex flex-1 flex-col justify-end md:justify-center">
           <div className="max-w-xl md:max-w-2xl">
             {/* Headline — a slightly gentler ceiling than the shared

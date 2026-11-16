@@ -18,14 +18,31 @@ export default function HeroMedia({
   const spotlightRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Autoplay is driven from here rather than the `autoPlay` attribute
-  // so a `prefers-reduced-motion` visitor gets the still poster frame
-  // only — the video never starts, so it's also never fetched beyond
-  // its poster image.
+  // Pause offscreen/background playback to avoid spending a phone's
+  // battery decoding a video the visitor can no longer see.
   useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reducedMotion.matches) return;
-    videoRef.current?.play().catch(() => {});
+    let inView = false;
+    const syncPlayback = () => {
+      if (!reducedMotion.matches && !document.hidden && inView) video.play().catch(() => {});
+      else video.pause();
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      syncPlayback();
+    });
+    observer.observe(container);
+    document.addEventListener("visibilitychange", syncPlayback);
+    reducedMotion.addEventListener("change", syncPlayback);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
+      reducedMotion.removeEventListener("change", syncPlayback);
+      video.pause();
+    };
   }, []);
 
   useEffect(() => {
@@ -68,7 +85,7 @@ export default function HeroMedia({
         loop
         playsInline
         preload="none"
-        className="absolute inset-0 h-full w-full object-cover object-[65%_center] md:object-center c7-anim-photo-expose"
+        className="home-hero-video absolute inset-0 h-full w-full object-cover object-[65%_center] md:object-center c7-anim-photo-expose"
       />
 
       <div

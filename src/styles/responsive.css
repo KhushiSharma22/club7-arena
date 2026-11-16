@@ -1,0 +1,169 @@
+/* Responsive behaviour shared by marketing, booking and discovery pages.
+   Route-specific selectors deliberately outrank older page rules. */
+:root { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { min-width: 280px; }
+main { min-width: 0; }
+main h1, main h2, main h3, main p, main summary { overflow-wrap: break-word; }
+button, a, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
+button, summary, a { touch-action: manipulation; }
+input, select, textarea { max-width: 100%; min-width: 0; scroll-margin-block: calc(var(--header-height, 90px) + 20px) 100px; }
+main figure, main article, main fieldset, .events-hero > *, .academy-hero > *, .booking-layout > *, .social-studio > * { min-width: 0; }
+.site-header > div:last-child > a { min-height: 44px; }
+.site-header .site-nav-link { min-height: 44px; display: inline-flex; align-items: center; }
+.site-header [role=menu] { max-height: calc(100svh - var(--header-height, 90px) - 24px); overflow-y: auto; }
+.site-header [role=menuitem] { min-height: 44px; }
+.site-menu-panel { height: 100dvh; }
+.site-menu-shell { display: flex; flex-direction: column; height: 100%; padding-inline: var(--spacing-edge); padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+.site-menu-top { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid #f3ecdf26; padding-block: 4px 12px; }
+.site-menu-top button { min-height: 44px; padding-inline: 8px; }
+.site-menu-links { min-height: 0; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding-block: 10px; scrollbar-width: thin; }
+.site-menu-links > * { border-bottom: 1px solid #f3ecdf26; }
+.site-menu-links > a, .site-menu-links > div > button { min-height: 52px; }
+.site-menu-links a, .site-menu-links button { overflow-wrap: anywhere; }
+.site-menu-links > div > div > a { min-height: 44px; }
+.site-menu-actions { display: grid; grid-template-columns: 1fr 1fr; flex-shrink: 0; gap: 10px; border-top: 1px solid #f3ecdf26; padding-top: 12px; }
+.site-menu-actions a { min-height: 48px; padding: 12px 10px; font-size: 12px; text-align: center; }
+.site-menu-open .site-whatsapp { visibility: hidden; pointer-events: none; }
+.site-whatsapp { bottom: max(20px, calc(env(safe-area-inset-bottom) + 12px)); right: max(16px, env(safe-area-inset-right)); }
+.site-contact-footer { padding-bottom: max(88px, calc(env(safe-area-inset-bottom) + 76px)); }
+.site-contact-footer a { min-height: 44px; display: inline-flex; align-items: center; }
+.events-page .events-button, .events-page .events-text-link, .academy-page .events-button { min-height: 48px; }
+.events-page .events-planner input:not([type=radio]), .events-page .events-planner select,
+.academy-page .academy-enquiry input, .academy-page .academy-enquiry select { min-height: 48px; }
+.events-page .events-planner textarea { min-height: 112px; max-height: 240px; resize: vertical; }
+.events-page .events-planner label, .events-page .events-planner legend { line-height: 1.6; }
+.events-page .events-planner fieldset label { min-height: 44px; }
+.events-page .events-planner button[type=submit] { min-height: 48px; }
+.events-page .occasion-faq summary { min-height: 56px; }
+.events-page .occasion-faq summary > span { flex-shrink: 0; }
+.booking-page .booking-days button { min-height: 64px; }
+.booking-page .booking-empty button { min-height: 44px; }
+.social-page .social-controls button { width: 48px; height: 48px; flex-shrink: 0; }
+.destination-page .destination-toolbar button { min-height: 44px; }
+.destination-page .destination-address button, .destination-page .destination-book { min-height: 44px; }
+
+/* Tablet columns need room for both the form and the request summary. */
+@media (min-width: 760px) and (max-width: 1023px) {
+ .booking-page .booking-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+ .booking-page .booking-summary { position: static; }
+ .destination-page .destination-desk { grid-template-columns: minmax(0, 1fr); }
+ .destination-page .destination-pass { border-left: 0; border-top: 1px dashed #77806e; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; align-items: start; }
+ .destination-page .destination-pass > h2, .destination-page .destination-address, .destination-page .destination-hours { margin-top: 0; }
+ .destination-page .destination-pass > .discover-eyebrow { grid-column: 1 / -1; }
+ .social-page.social-reels-page .social-studio { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 28px; }
+ .social-page.social-reels-page .social-tracklist { grid-column: 1 / -1; }
+}
+@media (max-width: 1099px) {
+ .site-header { padding-block: 12px; }
+}
+@media (max-width: 899px) {
+ .site-whatsapp { width: 48px; height: 48px; }
+ .site-whatsapp[data-form-visible=true], body:has(form:focus-within) .site-whatsapp { visibility: hidden; pointer-events: none; }
+ .home-hero { min-height: 620px; }
+ .home-hero .home-hero-content { min-height: 620px; padding-top: calc(var(--header-height, 76px) + 28px); }
+ .home-page .home-directory { gap: 8px 16px; }
+ .home-page .home-directory a { min-height: 56px; }
+ .home-page .gather-section { grid-template-columns: 1fr; gap: 32px; }
+ .home-page .gather-occasions h3 { font-size: 23px; }
+ .events-page .events-hero h1 { font-size: clamp(2.8rem, 10vw, 4.8rem); }
+ .events-page .events-actions { gap: 14px 20px; }
+ .events-page .events-intro { font-size: 16px; line-height: 1.75; }
+ .events-page .events-planner { width: calc(100% - 2 * var(--spacing-edge)); padding: clamp(20px, 5vw, 36px); }
+ .events-page .events-planner h2 { font-size: clamp(2rem, 8vw, 3.2rem); }
+ .events-page .events-planner input:not([type=radio]), .events-page .events-planner select, .events-page .events-planner textarea,
+ .academy-page .academy-enquiry input, .academy-page .academy-enquiry select,
+ .booking-page input, .booking-page select, .booking-page textarea { font-size: 16px; }
+ .events-page .events-planner label, .events-page .events-planner legend { font-size: 12px; letter-spacing: .06em; }
+ .events-page .events-planner button[type=submit] { font-size: 14px; }
+ .events-page .events-muted { font-size: 15px; }
+ .events-page .corporate-video, .events-page .birthday-film, .academy-page .academy-session-film { max-width: min(100%, 340px); }
+ .events-page .birthday-film video, .events-page .corporate-video video, .academy-page .academy-session-film video { max-height: 65svh; object-fit: contain; background: #06110b; }
+ .academy-page .academy-session-copy { order: 0; }
+ .academy-page .academy-entrance { max-width: 400px; }
+ .home-page .home-coaching { gap: 28px; }
+}
+@media (max-width: 599px) {
+ .home-hero { min-height: 600px; }
+ .home-hero .home-hero-content { min-height: 600px; padding-bottom: 36px; }
+ .home-hero h1 { font-size: 64px; }
+ .home-hero h1 > span { font-size: clamp(3.25rem, 14vw, 4.1rem); }
+ .home-page .home-directory a { font-size: clamp(21px, 5.8vw, 28px); gap: 10px; }
+ .home-page .home-directory a > span { font-size: 16px; }
+ .events-page .events-actions > .events-button { width: 100%; }
+ .events-page .events-actions > .events-text-link { justify-content: center; }
+ .events-page .events-planner .events-plan-form > .grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+ .events-page .events-planner .events-plan-form { gap: 24px; }
+ .events-page .events-planner input, .events-page .events-planner textarea, .events-page .events-planner select { margin-top: 8px; }
+ .events-page .events-location { font-size: 12px; line-height: 1.7; }
+ .events-page .events-location-divider { display: none; }
+ .events-page .corporate-moments-heading { gap: 20px; }
+ .events-page .corporate-photo-grid figcaption h3 { font-size: 26px; }
+ .events-page .birthday-story { gap: 28px; }
+ .events-page .birthday-testimonial blockquote { font-size: 18px; }
+ .events-page .occasion-faq { gap: 8px; }
+ .events-page .occasion-faq summary { font-size: 16px; }
+ .academy-page .academy-hero h1 { font-size: clamp(3rem, 12vw, 4rem); }
+ .academy-page .academy-session-copy h2 { font-size: clamp(2.8rem, 12vw, 4rem); }
+ .academy-page .academy-practice-photo { max-width: 340px; }
+ .academy-page .academy-enquiry form { padding: 24px 20px; }
+ .academy-page .academy-enquiry form button { width: 100%; }
+ .booking-page .booking-date-heading { align-items: stretch; flex-direction: column; gap: 10px; }
+ .booking-page .booking-date-heading input { width: 100%; }
+ .booking-page .booking-days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+ .booking-page .booking-days button { min-width: 0; padding: 10px 3px; }
+ .booking-page .booking-days button span { font-size: 10px; }
+ .booking-page .booking-days button strong { font-size: 12px; }
+ .booking-page .booking-contact-grid { grid-template-columns: minmax(0, 1fr); }
+ .booking-page .booking-summary { padding: 24px 20px; }
+ .booking-page .booking-empty { padding: 18px; }
+ .booking-page .booking-step-title { gap: 10px; }
+ .booking-page .booking-time-heading { align-items: start; flex-wrap: wrap; gap: 8px; }
+ .destination-page .destination-toolbar { flex-wrap: wrap; }
+ .destination-page .destination-frame, .destination-page .destination-frame iframe { min-height: 320px; }
+ .destination-page .destination-pass { padding: 24px 20px; }
+ .social-page.social-reels-page .social-phone-screen { height: clamp(410px, 135vw, 520px); }
+ .social-page.social-reels-page .social-tracklist { grid-template-columns: minmax(0, 1fr); }
+ .social-page.social-reels-page .social-tracklist button { min-height: 64px; }
+ .social-page.social-reels-page .social-phone-wrap { max-width: 340px; }
+ .social-page .social-outro .discover-primary { width: 100%; }
+ .site-menu-actions { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 359px) {
+ .site-header { gap: 12px; }
+ .site-header > div:last-child { gap: 10px; }
+ .site-header > div:last-child > a { font-size: 11px; }
+ .events-page .events-hero h1 { font-size: 2.85rem; }
+ .events-page .events-hero-image figcaption { left: 16px; right: 16px; }
+ .events-page .events-hero-image strong { font-size: 23px; }
+ .events-page .events-button { gap: 16px; padding-inline: 16px; }
+ .booking-page .booking-days { gap: 4px; }
+ .site-menu-top p { letter-spacing: .12em; }
+}
+/* Short landscape screens keep the menu usable and never squeeze the hero. */
+@media (max-height: 500px) and (max-width: 1099px) {
+ .site-header { padding-block: 8px; }
+ .site-menu-links > a, .site-menu-links > div > button { min-height: 44px; }
+ .site-menu-links .font-display { font-size: 26px; }
+ .site-menu-top { padding-bottom: 4px; }
+ .site-menu-top button { min-height: 40px; }
+ .site-menu-actions { grid-template-columns: 1fr 1fr; padding-top: 8px; }
+ .site-menu-actions a { min-height: 44px; }
+ .home-hero, .home-hero .home-hero-content { min-height: 500px; }
+ .home-hero .home-hero-content { padding-top: calc(var(--header-height, 68px) + 28px); }
+}
+@media (prefers-reduced-motion: reduce) {
+ .site-nav-link::after, .site-menu-links span, .events-page .events-hero-copy > *, .events-page .events-hero-image { animation: none; transition: none; }
+}
+@media (max-width: 1099px) {
+ .booking-page.booking-page input, .booking-page.booking-page select, .booking-page.booking-page textarea,
+ .events-page.events-page .events-planner input:not([type=radio]), .events-page.events-page .events-planner select, .events-page.events-page .events-planner textarea,
+ .academy-page.academy-page .academy-enquiry input, .academy-page.academy-page .academy-enquiry select { font-size: 16px; }
+ .booking-page.booking-page input, .booking-page.booking-page select { min-height: 48px; }
+ .booking-page.booking-page textarea { min-height: 112px; resize: vertical; }
+}
+
+@media (max-width: 1099px) {
+ main button:not([role=menuitem]) { min-height: 44px; }
+ .booking-page .booking-date-heading input { max-width: 100%; }
+ .home-page button, .events-page button { touch-action: manipulation; }
+}

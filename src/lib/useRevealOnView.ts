@@ -23,7 +23,10 @@ export function useRevealOnView<T extends HTMLElement>(threshold = 0.2) {
           observer.disconnect();
         }
       },
-      { threshold }
+      // A section can be taller than a phone viewport. Cap the required
+      // intersection to a small visible slice, rather than a fraction of
+      // the entire (potentially very tall) form or gallery.
+      { threshold: Math.min(threshold, 48 / Math.max(1, el.getBoundingClientRect().height)) }
     );
     observer.observe(el);
     return () => observer.disconnect();

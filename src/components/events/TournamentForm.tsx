@@ -77,7 +77,11 @@ export default function TournamentForm() {
     e.preventDefault();
     const next = validate();
     setErrors(next);
-    if (Object.keys(next).length > 0) return;
+    if (Object.keys(next).length > 0) {
+      const form = e.currentTarget as HTMLFormElement;
+      requestAnimationFrame(() => form.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
+      return;
+    }
 
     const lines = [
       `Hi Club 7, I'd like to register a team for your next tournament.`,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import FixtureOverlay from "./FixtureOverlay";
@@ -75,8 +75,9 @@ function GroupEventsMenu({ pathname }: { pathname: string }) {
     <div ref={wrapRef} className="relative" onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen(v => !v)}
         aria-haspopup="menu"
+        aria-controls="group-events-menu"
         aria-expanded={open}
         aria-current={isEventsPage ? "page" : undefined}
         className="site-nav-link flex items-center gap-1.5 font-body text-body-sm font-medium uppercase tracking-[0.08em] text-c7-ink-dim transition-colors hover:text-c7-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c7-red"
@@ -87,7 +88,9 @@ function GroupEventsMenu({ pathname }: { pathname: string }) {
         </span>
       </button>
       <div
+        id="group-events-menu"
         role="menu"
+        inert={!open}
         className={`absolute left-0 top-full mt-3 w-56 border border-c7-line/15 bg-c7-bg-1 py-2 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-[opacity,transform] duration-150 ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
         }`}
@@ -112,6 +115,13 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const closeMenu = useCallback(() => setOpen(false), []);
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1100px)");
+    const handleChange = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener("change", handleChange);
+    return () => desktop.removeEventListener("change", handleChange);
+  }, []);
 
   /* The header's height is purely content-driven (no fixed h-*) — it
      changes with breakpoint, font-metric swaps, and copy edits. Any
@@ -156,7 +166,7 @@ export default function SiteHeader() {
           that's deliberately composed within a margin. */}
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-[1600px] items-center justify-between px-edge py-5 md:py-7"
+        className="site-header fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-[1600px] items-center justify-between px-edge py-5 md:py-7"
       >
         <div className="flex items-baseline gap-3">
           <Link href="/" className="font-display text-3xl md:text-4xl uppercase tracking-tight text-c7-ink leading-none">
@@ -226,7 +236,7 @@ export default function SiteHeader() {
             aria-expanded={open}
             aria-controls="fixture-overlay"
             aria-label="Open menu"
-            className="min-[1100px]:hidden flex h-9 w-9 flex-col items-center justify-center gap-1.5 border border-c7-line/30"
+            className="min-[1100px]:hidden flex h-11 w-11 flex-col items-center justify-center gap-1.5 border border-c7-line/30"
           >
             <span className="block h-px w-4 bg-c7-ink" />
             <span className="block h-px w-2.5 self-start ml-[11px] bg-c7-ink" />
@@ -234,7 +244,7 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      <FixtureOverlay open={open} onClose={() => setOpen(false)} />
+      <FixtureOverlay open={open} onClose={closeMenu} />
     </>
   );
 }

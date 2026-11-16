@@ -87,7 +87,11 @@ export default function EnquiryForm({
     e.preventDefault();
     const next = validate();
     setErrors(next);
-    if (Object.keys(next).length > 0) return;
+    if (Object.keys(next).length > 0) {
+      const form = e.currentTarget as HTMLFormElement;
+      requestAnimationFrame(() => form.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
+      return;
+    }
 
     const lines = [
       `Hi Club 7, I'd like to plan a ${occasion}.`,
@@ -137,11 +141,12 @@ export default function EnquiryForm({
         ) : (
           <form onSubmit={handleSubmit} noValidate className="events-plan-form flex flex-col gap-y-9">
             <div className="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2">
-              <FormRow id="plan-name" label="Name" type="text" value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} error={errors.name} />
+              <FormRow id="plan-name" label="Name" type="text" autoComplete="name" value={name} onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} error={errors.name} />
               <FormRow
                 id="plan-phone"
                 label="Phone / WhatsApp"
                 type="tel"
+                autoComplete="tel"
                 inputMode="tel"
                 placeholder="+91 ..."
                 value={phone}
