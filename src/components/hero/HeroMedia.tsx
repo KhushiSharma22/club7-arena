@@ -10,7 +10,7 @@ type HeroMediaProps = {
 };
 
 export default function HeroMedia({
-  videoSrc = "/venue/drone-hero-clean.mp4",
+  videoSrc = "/venue/drone-hero-green.mp4",
   imageSrc = "/venue/drone-hero-clean.webp",
   imageAlt = "Club 7's floodlit turf complex at night, Sector 89, Faridabad",
 }: HeroMediaProps) {

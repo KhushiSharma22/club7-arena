@@ -37,3 +37,10 @@ AI video editing could not run: Seedance required a Plus plan and Gemini Omni re
 - Corporate team/trophy photos, birthday photo, entrance photos and stock photos were reviewed and retained because no construction cleanup was needed.
 
 Validation: lint and production build passed. Homepage hero video loads at 1280×720; cleaned homepage images load; coaching photos load on 390px mobile without horizontal overflow. Original integrated booking component and temporary WhatsApp mode remain unchanged.
+
+
+## Full-frame drone video revision
+
+The tight crop was rejected by the user. The homepage now uses `public/venue/drone-hero-green.mp4`: the original landscape composition and complete approximately 15.8-second drone movement, with targeted AI-cleaned construction areas composited onto the moving footage. The underlying image plate is the built-in image_gen output `public/venue/drone-hero-clean.webp`.
+
+`scripts/green-drone-video.py` aligns that plate to the source using SIFT/RANSAC, tracks multiple source keyframes, interpolates ground-plane corner positions, and applies feathered masks only to the upper construction area, left rubble strip and small exposed lower perimeter. Original gameplay/turf pixels outside those masks and the landscape matte are preserved. The export is 1600×900, 30fps H.264, CRF19, faststart, muted as before. The previous cropped export is retained as an unused historical asset.
